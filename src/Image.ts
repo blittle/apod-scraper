@@ -1,4 +1,4 @@
-export module apod.image {
+module apod.image {
 
     export interface APODImage {
         title: string;

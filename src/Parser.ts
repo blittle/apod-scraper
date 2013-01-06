@@ -1,5 +1,5 @@
 /// <references path="Image.ts"/>
-export module apod.parser {
+module apod.parser {
 
     export interface ParserInterface {
         parse() : apod.image.APODImage;

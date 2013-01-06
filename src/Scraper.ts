@@ -1,21 +1,21 @@
 /// <references path="Image.ts"/>
-export module apod {
+module apod {
 
     var DAY = 86400000;
 
-    export interface options {
+    export interface ScraperOptions {
         cache : bool;
         url: string;
     }
 
     export class Scraper {
-        constructor ( public options: options ) {
+        constructor ( public options: ScraperOptions ) {
 
         }
 
-        scrape( depth: number ) : image.APODImage[] {
+        scrape( depth: number ) : apod.image.APODImage[] {
 
-            var scrapedImages : image.APODImage[] = [];
+            var scrapedImages : apod.image.APODImage[] = [];
 
             var date;
 

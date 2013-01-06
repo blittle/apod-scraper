@@ -1,3 +1,3 @@
-export module FileStream {
+module apod.FileStream {
     export function test() {}
 }

@@ -7,10 +7,7 @@ module.exports = function(grunt) {
         typescript: {
             base: {
                 src: ['src/**/*.ts'],
-                dest: 'build/apod-scraper.js',
-                options: {
-                    module: 'amd'
-                }
+                dest: 'build/apod-scraper.js'
             }
         },
 
