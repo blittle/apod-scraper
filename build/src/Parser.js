@@ -1,9 +1,14 @@
 var apod;
 (function (apod) {
-    var parser;
     (function (parser) {
-        function bret() {
-        }
-        parser.bret = bret;
-    })(parser || (parser = {}));
+        var Parser = (function () {
+            function Parser() { }
+            Parser.prototype.parse = function () {
+                return null;
+            };
+            return Parser;
+        })();
+        parser.Parser = Parser;        
+    })(apod.parser || (apod.parser = {}));
+    var parser = apod.parser;
 })(apod || (apod = {}));

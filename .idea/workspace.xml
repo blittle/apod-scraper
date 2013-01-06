@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbd1a1db-6972-455c-b763-c52abd4d2916" name="Default" comment="" />
+    <list default="true" id="bbd1a1db-6972-455c-b763-c52abd4d2916" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\apod-scraper.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\src\ParserInterface.ts" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Bret Little\dev\APODScraper\src\BasicParser.ts" afterPath="$PROJECT_DIR$/src/Parser.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileStream.ts" afterPath="$PROJECT_DIR$/src/FileStream.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/src/Parser.js" afterPath="$PROJECT_DIR$/build/src/Parser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grunt.js" afterPath="$PROJECT_DIR$/grunt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="APODScraper.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/apod-scraper.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357280133793" ignored="false" />
     <file path="/apod-scraper.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357432021770" ignored="false" />
     <file path="/grunt.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357418616426" ignored="false" />
     <file path="/package.json" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357430813871" ignored="false" />
-    <file path="/FileStream.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357432443308" ignored="false" />
+    <file path="/FileStream.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357449145923" ignored="false" />
     <file path="/ParserInterface.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357435120388" ignored="false" />
-    <file path="$PROJECT_DIR$/build/src/Parser.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357434872069" ignored="false" />
-    <file path="$PROJECT_DIR$/build/src/FileStream.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357435290505" ignored="false" />
-    <file path="$PROJECT_DIR$/build/src/ParserInterface.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357435290505" ignored="false" />
-    <file path="/Parser.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357435472669" ignored="false" />
-    <file path="$PROJECT_DIR$/build/src/BasicParser.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357435508161" ignored="false" />
+    <file path="/Parser.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357449133779" ignored="false" />
+    <file path="/Dummy.txt" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357444469946" ignored="false" />
+    <file path="$PROJECT_DIR$/build/src/ParserInterface.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357444481464" ignored="false" />
+    <file path="/Image.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357444573137" ignored="false" />
+    <file path="/Image.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357449106002" ignored="false" />
+    <file path="$PROJECT_DIR$/build/src/BasicParser.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357444984844" ignored="false" />
+    <file path="$PROJECT_DIR$/build/src/FileStream.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357446024699" ignored="false" />
+    <file path="/Scraper.ts" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357449005921" ignored="false" />
+    <file path="$PROJECT_DIR$/build/src/Scraper.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357446767794" ignored="false" />
+    <file path="/APODScraperSpec.js" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357448277786" ignored="false" />
+    <file path="/index.html" changelist="bbd1a1db-6972-455c-b763-c52abd4d2916" time="1357448366321" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,19 +89,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="apod-scraper.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apod-scraper.js">
+      <file leaf-file-name="Parser.ts" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Parser.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="10" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
+            <state line="1" column="7" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BasicParser.ts" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/BasicParser.ts">
+      <file leaf-file-name="APODScraper.iml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/APODScraper.iml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="27" selection-start="196" selection-end="196" vertical-scroll-proportion="0.13476783">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Scraper.ts" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Scraper.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="32" selection-start="338" selection-end="338" vertical-scroll-proportion="0.3272933">
               <folding />
             </state>
           </provider>
@@ -94,16 +119,16 @@
       <file leaf-file-name="FileStream.ts" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FileStream.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="32" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+            <state line="1" column="4" selection-start="31" selection-end="58" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParserInterface.ts" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ParserInterface.ts">
+      <file leaf-file-name="Image.ts" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Image.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="5" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
+            <state line="20" column="34" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -112,7 +137,34 @@
       <file leaf-file-name="grunt.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grunt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="37" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
+            <state line="11" column="32" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APODScraperSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/APODScraperSpec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="43" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="45" selection-start="103" selection-end="103" vertical-scroll-proportion="-3.2692308">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apod-scraper.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/apod-scraper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -121,8 +173,10 @@
       <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="26" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="10" column="26" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1357447398162" expanded="true" signature="285:365" placeholder="{&quot;grunt&quot;: &quot;latest&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,17 +188,31 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/apod-scraper.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/apod-scraper.ts" />
-        <option value="$PROJECT_DIR$/src/FileStream.ts" />
-        <option value="$PROJECT_DIR$/grunt.js" />
-        <option value="$PROJECT_DIR$/src/Parser.ts" />
+        <option value="$PROJECT_DIR$/src/Image.js" />
         <option value="$PROJECT_DIR$/src/ParserInterface.ts" />
         <option value="$PROJECT_DIR$/src/BasicParser.ts" />
+        <option value="$PROJECT_DIR$/test/APODScraperSpec.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/grunt.js" />
+        <option value="$PROJECT_DIR$/build/apod-scraper.js" />
+        <option value="$PROJECT_DIR$/src/Scraper.ts" />
+        <option value="$PROJECT_DIR$/src/Image.ts" />
+        <option value="$PROJECT_DIR$/src/Parser.ts" />
+        <option value="$PROJECT_DIR$/src/FileStream.ts" />
       </list>
     </option>
   </component>
@@ -154,14 +222,14 @@
     <option name="width" value="1938" />
     <option name="height" value="1050" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -213,6 +281,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APODScraper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APODScraper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -223,12 +305,16 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSLint" />
+    <property name="last_opened_file_path" value="C:/Program Files/nodejs/node.exe" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
@@ -239,7 +325,7 @@
       <recent name="C:\Users\Bret Little\dev\APODScraper\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.Grunt">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -252,6 +338,9 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -331,7 +420,16 @@
       <patterns />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="false" name="Grunt" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="node_modules/grunt/bin/grunt" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.Grunt" />
+    </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -353,11 +451,12 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39933994" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.4984375" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -366,11 +465,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24479167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24479167" sideWeight="0.6710671" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -431,44 +529,74 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apod-scraper.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="10" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
+        <state line="10" column="26" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1357447398162" expanded="true" signature="285:365" placeholder="{&quot;grunt&quot;: &quot;latest&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/APODScraperSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="43" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0">
+        <state line="5" column="45" selection-start="103" selection-end="103" vertical-scroll-proportion="-3.2692308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/APODScraper.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grunt.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="37" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
+        <state line="11" column="32" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/apod-scraper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Parser.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="7" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FileStream.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="32" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+        <state line="1" column="4" selection-start="31" selection-end="58" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ParserInterface.ts">
+    <entry file="file://$PROJECT_DIR$/src/Image.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="5" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
+        <state line="20" column="34" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicParser.ts">
+    <entry file="file://$PROJECT_DIR$/src/Scraper.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="27" selection-start="196" selection-end="196" vertical-scroll-proportion="0.13476783">
+        <state line="17" column="32" selection-start="338" selection-end="338" vertical-scroll-proportion="0.3272933">
           <folding />
         </state>
       </provider>
