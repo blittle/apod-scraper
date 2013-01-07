@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', 'typescript lint');
-    grunt.registerTask('amd', 'typescript lint requirejs');
+    grunt.registerTask('default', 'typescript requirejs min');
+    grunt.registerTask('amd', 'typescript requirejs');
     grunt.registerTask('test', 'typescript requirejs qunit');
 };

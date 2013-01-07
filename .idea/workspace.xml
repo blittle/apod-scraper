@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd1a1db-6972-455c-b763-c52abd4d2916" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\src\BasicParser.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\src\FileStream.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\src\Image.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\src\Parser.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\src\ParserInterface.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\src\Scraper.js" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\apod-scraper-amd.js" afterPath="$PROJECT_DIR$/dist/apod-scraper-amd.js" />
-      <change type="MOVED" beforePath="C:\Users\Bret Little\dev\APODScraper\build\apod-scraper.js" afterPath="$PROJECT_DIR$/dist/apod-scraper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/APODTest.html" afterPath="$PROJECT_DIR$/test/APODTest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grunt.js" afterPath="$PROJECT_DIR$/grunt.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -113,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grunt.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="grunt.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grunt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="35" selection-start="423" selection-end="423" vertical-scroll-proportion="-12.24">
+            <state line="26" column="82" selection-start="609" selection-end="609" vertical-scroll-proportion="0.42540792">
               <folding />
             </state>
           </provider>
@@ -140,7 +130,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="apod-scraper.min.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="apod-scraper.min.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/apod-scraper.min.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="28" selection-start="22" selection-end="31" vertical-scroll-proportion="0.0">
@@ -216,9 +206,9 @@
         <option value="$PROJECT_DIR$/src/Parser.ts" />
         <option value="$PROJECT_DIR$/src/Scraper.ts" />
         <option value="$PROJECT_DIR$/test/APODScraperTest.js" />
-        <option value="$PROJECT_DIR$/grunt.js" />
         <option value="$PROJECT_DIR$/test/APODTest.html" />
         <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/grunt.js" />
       </list>
     </option>
   </component>
@@ -618,13 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grunt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="35" selection-start="423" selection-end="423" vertical-scroll-proportion="-12.24">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/APODScraperTest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="0" selection-start="1835" selection-end="1835" vertical-scroll-proportion="-28.2">
@@ -651,6 +634,13 @@
     <entry file="file://$PROJECT_DIR$/dist/apod-scraper.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="28" selection-start="22" selection-end="31" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grunt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="82" selection-start="609" selection-end="609" vertical-scroll-proportion="0.42540792">
           <folding />
         </state>
       </provider>
