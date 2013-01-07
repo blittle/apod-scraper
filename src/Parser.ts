@@ -1,13 +1,15 @@
 /// <references path="Image.ts"/>
-module apod.parser {
+module apod {
 
     export interface ParserInterface {
-        parse() : apod.image.APODImage;
+        parse(data: string) : apod.APODImage;
     }
 
     export class Parser implements ParserInterface {
-        public parse(): apod.image.APODImage {
-            return null;
+        constructor() {};
+
+        public parse(data: string): apod.APODImage {
+            return new apod.APODImageImpl("","","","");
         }
     }
 }
