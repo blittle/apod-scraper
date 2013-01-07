@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-typescript');
+    grunt.loadNpmTasks('grunt-requirejs');
     grunt.loadNpmTasks('grunt-jasmine-node');
 
     grunt.initConfig({
@@ -11,9 +12,26 @@ module.exports = function(grunt) {
             }
         },
 
-        jasmine_node: {
-            specNameMatcher: ".spec",
-            projectRoot: "."
+        qunit: {
+            all: ['test/**/*.html']
+        },
+
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: "build",
+                    name:"apod-scraper",
+                    mainConfigFile: "config.js",
+                    out: "build/apod-scraper-amd.js",
+                    optimize: "none",
+                    shim: {
+                        "apod-scraper" : {
+                            "deps": [],
+                            "exports" : "apod"
+                        }
+                    }
+                }
+            }
         },
 
         lint: {
@@ -22,6 +40,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', 'typescript lint');
-    grunt.registerTask('jasmine', 'typescript lint jasmine_node');
-
+    grunt.registerTask('amd', 'typescript lint requirejs');
+    grunt.registerTask('test', 'typescript requirejs qunit');
 };

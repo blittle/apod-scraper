@@ -1,18 +1,37 @@
-var apod = require("../build/apod-scraper.js");
+/*global QUnit:false, module:false, test:false, asyncTest:false, expect:false*/
+/*global start:false, stop:false ok:false, equal:false, notEqual:false, deepEqual:false*/
+/*global notDeepEqual:false, strictEqual:false, notStrictEqual:false, raises:false*/
+(function(apod) {
 
-describe("APOD Scraper", function() {
-    "use strict";
+    /*
+     ======== A Handy Little QUnit Reference ========
+     http://docs.jquery.com/QUnit
 
-    it("Module should exist", function() {
-        expect(apod).toBeDefined();
+     Test methods:
+     expect(numAssertions)
+     stop(increment)
+     start(decrement)
+     Test assertions:
+     ok(value, [message])
+     equal(actual, expected, [message])
+     notEqual(actual, expected, [message])
+     deepEqual(actual, expected, [message])
+     notDeepEqual(actual, expected, [message])
+     strictEqual(actual, expected, [message])
+     notStrictEqual(actual, expected, [message])
+     raises(block, [expected], [message])
+     */
+
+    var scraper;
+
+    function setup() {
+        scraper = new apod.Scraper();
+    }
+
+    test('is creatable', 1, function() {
+        console.error(scraper);
+        setup();
+        strictEqual(typeof scraper.scrape, "function", 'should contain a scrape method');
     });
 
-    it("Should create a new scraper", function() {
-        console.log(apod);
-        var apodScraper = new apod.Scraper();
-
-        expect(apodScraper.options).toBeDefined();
-        expect(apodScraper.scrape).toBeDefined();
-    });
-
-});
+}(apod));

@@ -9,7 +9,8 @@
     "devDependencies": {
         "grunt": "latest",
         "grunt-typescript" : "latest",
-	"grunt-jasmine-node": "latest"
+        "grunt-requirejs"  : "latest",
+	    "grunt-jasmine-node": "latest"
     },
     "engine": "node >= 0.6.0"
 }
