@@ -5,7 +5,7 @@
     },
     baseUrl: "build",
     mainConfigFile: "config.js",
-    out: "build/apod-scraper-amd.js",
+    out: "dist/apod-scraper-amd.js",
     optimize: "none",
     shim: {
         "apod-scraper" : {

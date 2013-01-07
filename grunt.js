@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         typescript: {
             base: {
                 src: ['src/**/*.ts'],
-                dest: 'build/apod-scraper.js'
+                dest: 'dist/apod-scraper.js'
             }
         },
 
@@ -16,13 +16,20 @@ module.exports = function(grunt) {
             all: ['test/**/*.html']
         },
 
+        min: {
+            dist: {
+                src: ['dist/apod-scraper.js'],
+                dest: 'dist/apod-scraper.min.js'
+            }
+        },
+
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: "build",
+                    baseUrl: "dist",
                     name:"apod-scraper",
                     mainConfigFile: "config.js",
-                    out: "build/apod-scraper-amd.js",
+                    out: "dist/apod-scraper-amd.js",
                     optimize: "none",
                     shim: {
                         "apod-scraper" : {
@@ -35,7 +42,7 @@ module.exports = function(grunt) {
         },
 
         lint: {
-            all: ['build/**/*.js', 'grunt.js']
+            all: ['dist/**/*.js', 'grunt.js']
         }
     });
 
