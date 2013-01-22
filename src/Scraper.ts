@@ -1,5 +1,7 @@
 /// <references path="Image.ts"/>
 /// <references path="Parser.ts"/>
+/// <references path="Requester.ts"/>
+/// <references path="NodeRequester.ts"/>
 module apod {
 
     var DAY = 86400000;
@@ -7,17 +9,22 @@ module apod {
     export interface ScraperOptions {
         cache : bool;
         url: string;
+        path: string;
     }
 
     export class Scraper {
 
         private parser : apod.Parser;
+        private webRequester: apod.webRequest.Requester;
 
         constructor ( public options: ScraperOptions ) {
             this.options = this.options || {
                 cache: options && options.cache || true,
-                url:   options && options.url   || "http://apod.nasa.gov/apod/ap"
+                url:   options && options.url   || "http://apod.nasa.gov",
+                path:  options && options.path  || "/apod/ap"
             };
+
+            this.webRequester = new apod.webRequest.NodeRequester();
 
             this.parser = new apod.Parser();
         }
@@ -34,8 +41,8 @@ module apod {
                 date = new Date(date.getTime() - ( DAY * depth) );
 
                 dateString = this.getDateString(date);
-                requestResult = apod.WebRequest.requestImage(dateString, this.options);
-                scrapedImages.push(this.parser.parse(requestResult));
+                requestResult = this.webRequester.getPage(this.options.url, this.options.path + dateString + '.html');
+                scrapedImages.push(this.parser.parse(""));
             }
 
             return scrapedImages;
