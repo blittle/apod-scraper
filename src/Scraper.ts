@@ -35,7 +35,7 @@ export class Scraper {
 
         var scrapedImages : Image.APODImageInterface[] = [];
 
-        var date, dateString, requestResult,
+        var date, dateString,
             parser = this.parser;
 
         while (depth--) {
@@ -47,7 +47,6 @@ export class Scraper {
                 this.options.url,
                 this.options.path + dateString + '.html',
                 (body : string) => {
-                    console.log(body);
                     scrapedImages.push(parser.parse("body"));
                 }
             );

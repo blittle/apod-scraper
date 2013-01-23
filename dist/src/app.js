@@ -1,6 +1,6 @@
 var scraper = require("./Scraper")
 var nodeRequest = require("./request/NodeRequester")
-var jqueryParse = require("./parse/JQueryParser")
+var cheerioParse = require("./parse/CheerioParser")
 
-var apodScraper = new scraper.Scraper(new nodeRequest.NodeRequester(), new jqueryParse.JQueryParser());
+var apodScraper = new scraper.Scraper(new nodeRequest.NodeRequester(), new cheerioParse.CheerioParser());
 apodScraper.scrape(10);

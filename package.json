@@ -4,7 +4,8 @@
     "description": "A tool to scrape the astronomy picture of the day website and return images, titles, and descriptions",
     "author": "Bret Little",
     "dependencies": {
-        "underscore" : "latest"
+        "underscore" : "latest",
+        "cheerio"     : "latest"
     },
     "devDependencies": {
         "grunt": "latest",
