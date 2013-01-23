@@ -1,10 +1,10 @@
 var image = require("../image/Image")
-var Parser = (function () {
-    function Parser() {
+var GenericParser = (function () {
+    function GenericParser() {
     }
-    Parser.prototype.parse = function (data) {
-        return new image.APODImageImpl("", "", "", "");
+    GenericParser.prototype.parse = function (data) {
+        return new image.APODImage("", "", "", "");
     };
-    return Parser;
+    return GenericParser;
 })();
-exports.Parser = Parser;
+exports.GenericParser = GenericParser;

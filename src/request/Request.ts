@@ -4,11 +4,11 @@ export interface Page {
     body: string;
 }
 
-export interface Requester {
+export interface RequesterInterface {
     getPage(host: string, path: string, callback: Function) : void;
 }
 
-export class GenericRequester implements Requester {
+export class GenericRequester implements RequesterInterface {
     getPage(host: string, path: string, callback: Function) {
 
     }

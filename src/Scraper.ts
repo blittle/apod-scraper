@@ -3,7 +3,6 @@
 var DAY = 86400000;
 
 import parse = module('parse/Parser');
-import nodeRequest = module('request/NodeRequester');
 import request = module('request/Request');
 import Image = module('image/Image');
 
@@ -17,10 +16,11 @@ export interface ScraperOptions {
 
 export class Scraper {
 
-    private parser : parse.Parser;
-    private webRequester: request.Requester;
-
-    constructor ( public options: ScraperOptions={} ) {
+    constructor (
+        private requester: request.RequesterInterface,
+        private parser   : parse.ParserInterface,
+        public  options  : ScraperOptions={}
+    ) {
 
         this.options = _.extend({
             cache: options && options.cache || true,
@@ -28,27 +28,27 @@ export class Scraper {
             path:  options && options.path  || "/apod/ap"
         }, this.options);
 
-        this.webRequester = new nodeRequest.NodeRequester();
-        this.parser = new parse.Parser();
+        this.parser.parse("");
     }
 
-    scrape( depth: number ) : Image.APODImage[] {
+    scrape( depth: number ) : Image.APODImageInterface[] {
 
-        var scrapedImages : Image.APODImage[] = [];
+        var scrapedImages : Image.APODImageInterface[] = [];
 
         var date, dateString, requestResult,
-            scope = this;
+            parser = this.parser;
 
         while (depth--) {
             date = new Date();
             date = new Date(date.getTime() - ( DAY * depth) );
 
             dateString = this.getDateString(date);
-            this.webRequester.getPage(
+            this.requester.getPage(
                 this.options.url,
                 this.options.path + dateString + '.html',
-                (body) => {
-                    scrapedImages.push(scope.parser.parse(body))
+                (body : string) => {
+                    console.log(body);
+                    scrapedImages.push(parser.parse("body"));
                 }
             );
         }

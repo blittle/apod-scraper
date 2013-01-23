@@ -1,31 +1,32 @@
 var DAY = 86400000;
-var parse = require("./parse/Parser")
-var nodeRequest = require("./request/NodeRequester")
+
 
 
 var _ = require('underscore')
 var Scraper = (function () {
-    function Scraper(options) {
+    function Scraper(requester, parser, options) {
         if (typeof options === "undefined") { options = {
         }; }
+        this.requester = requester;
+        this.parser = parser;
         this.options = options;
         this.options = _.extend({
             cache: options && options.cache || true,
             url: options && options.url || "apod.nasa.gov",
             path: options && options.path || "/apod/ap"
         }, this.options);
-        this.webRequester = new nodeRequest.NodeRequester();
-        this.parser = new parse.Parser();
+        this.parser.parse("");
     }
     Scraper.prototype.scrape = function (depth) {
         var scrapedImages = [];
-        var date, dateString, requestResult, scope = this;
+        var date, dateString, requestResult, parser = this.parser;
         while(depth--) {
             date = new Date();
             date = new Date(date.getTime() - (DAY * depth));
             dateString = this.getDateString(date);
-            this.webRequester.getPage(this.options.url, this.options.path + dateString + '.html', function (body) {
-                scrapedImages.push(scope.parser.parse(body));
+            this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (body) {
+                console.log(body);
+                scrapedImages.push(parser.parse("body"));
             });
         }
         return [];

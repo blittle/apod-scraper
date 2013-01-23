@@ -1,11 +1,11 @@
-export interface APODImage {
+export interface APODImageInterface {
     title: string;
     description: string;
     url: string;
     thum: string;
 }
 
-export class APODImageImpl implements APODImage {
+export class APODImage implements APODImageInterface {
 
     constructor (
         public title: string,

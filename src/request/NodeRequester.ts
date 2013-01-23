@@ -3,9 +3,9 @@
 import http = module('http');
 import request = module('Request');
 
-export class NodeRequester implements request.Requester {
+export class NodeRequester implements request.RequesterInterface {
 
-    getPage(host: string, path: string, callback: Function) {
+    getPage(host: string, path: string, callback: Function) : void {
 
         var options = {
             hostname: host,
@@ -16,8 +16,6 @@ export class NodeRequester implements request.Requester {
 //
         var req = http.request(options, function(res) {
             var body = "";
-            console.log('STATUS: ' + res.statusCode);
-            console.log('HEADERS: ' + JSON.stringify(res.headers));
             res.setEncoding('utf8');
             res.on('data', function (chunk) {
                 body += chunk;

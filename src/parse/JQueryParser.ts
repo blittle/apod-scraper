@@ -1,10 +1,7 @@
+import parser = module("Parser");
 import image = module("../image/Image");
 
-export interface ParserInterface {
-    parse(data: string) : image.APODImageInterface;
-}
-
-export class GenericParser implements ParserInterface {
+export class JQueryParser implements parser.ParserInterface {
     constructor() {};
 
     public parse(data: string): image.APODImageInterface {
