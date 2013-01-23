@@ -1,7 +1,4 @@
-/// <references path="Image.ts"/>
-/// <references path="Parser.ts"/>
-/// <references path="request/Request.ts"/>
-/// <references path="request/NodeRequester.ts"/>
+///<reference path='../typescript-def/underscore.d.ts'/>
 
 var DAY = 86400000;
 
@@ -10,10 +7,12 @@ import nodeRequest = module('request/NodeRequester');
 import request = module('request/Request');
 import Image = module('image/Image');
 
+import _ = module('underscore');
+
 export interface ScraperOptions {
-    cache : bool;
-    url: string;
-    path: string;
+    cache?: bool;
+    url?: string;
+    path?: string;
 }
 
 export class Scraper {
@@ -21,13 +20,13 @@ export class Scraper {
     private parser : parse.Parser;
     private webRequester: request.Requester;
 
-    constructor ( public options: ScraperOptions ) {
+    constructor ( public options: ScraperOptions={} ) {
 
-        this.options = this.options || {
+        this.options = _.extend({
             cache: options && options.cache || true,
             url:   options && options.url   || "http://apod.nasa.gov",
             path:  options && options.path  || "/apod/ap"
-        };
+        }, this.options);
 
         this.webRequester = new nodeRequest.NodeRequester();
         this.parser = new parse.Parser();

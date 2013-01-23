@@ -1,8 +1,3 @@
-export class APODScraper {
+import scraper = module("Scraper");
 
-    private requester : any;
-
-    constructor() {
-
-    }
-}
+var apodScraper = new scraper.Scraper();

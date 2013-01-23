@@ -3,14 +3,17 @@ var parse = require("./parse/Parser")
 var nodeRequest = require("./request/NodeRequester")
 
 
+var _ = require('underscore')
 var Scraper = (function () {
     function Scraper(options) {
+        if (typeof options === "undefined") { options = {
+        }; }
         this.options = options;
-        this.options = this.options || {
+        this.options = _.extend({
             cache: options && options.cache || true,
             url: options && options.url || "http://apod.nasa.gov",
             path: options && options.path || "/apod/ap"
-        };
+        }, this.options);
         this.webRequester = new nodeRequest.NodeRequester();
         this.parser = new parse.Parser();
     }
