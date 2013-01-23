@@ -8,7 +8,10 @@ module.exports = function(grunt) {
         typescript: {
             base: {
                 src: ['src/**/*.ts'],
-                dest: 'dist/apod-scraper.js'
+                dest: 'dist/',
+                options: {
+                    module: "commonjs"
+                }
             }
         },
 

@@ -1,73 +1,75 @@
 /// <references path="Image.ts"/>
 /// <references path="Parser.ts"/>
-/// <references path="Requester.ts"/>
-/// <references path="NodeRequester.ts"/>
-module apod {
+/// <references path="request/Request.ts"/>
+/// <references path="request/NodeRequester.ts"/>
 
-    var DAY = 86400000;
+var DAY = 86400000;
 
-    export interface ScraperOptions {
-        cache : bool;
-        url: string;
-        path: string;
+import parse = module('parse/Parser');
+import nodeRequest = module('request/NodeRequester');
+import request = module('request/Request');
+import Image = module('image/Image');
+
+export interface ScraperOptions {
+    cache : bool;
+    url: string;
+    path: string;
+}
+
+export class Scraper {
+
+    private parser : parse.Parser;
+    private webRequester: request.Requester;
+
+    constructor ( public options: ScraperOptions ) {
+
+        this.options = this.options || {
+            cache: options && options.cache || true,
+            url:   options && options.url   || "http://apod.nasa.gov",
+            path:  options && options.path  || "/apod/ap"
+        };
+
+        this.webRequester = new nodeRequest.NodeRequester();
+        this.parser = new parse.Parser();
     }
 
-    export class Scraper {
+    scrape( depth: number ) : Image.APODImage[] {
 
-        private parser : apod.Parser;
-        private webRequester: apod.webRequest.Requester;
+        var scrapedImages : Image.APODImage[] = [];
 
-        constructor ( public options: ScraperOptions ) {
-            this.options = this.options || {
-                cache: options && options.cache || true,
-                url:   options && options.url   || "http://apod.nasa.gov",
-                path:  options && options.path  || "/apod/ap"
-            };
+        var date, dateString, requestResult;
 
-            this.webRequester = new apod.webRequest.NodeRequester();
+        while (depth--) {
+            date = new Date();
+            date = new Date(date.getTime() - ( DAY * depth) );
 
-            this.parser = new apod.Parser();
+            dateString = this.getDateString(date);
+            requestResult = this.webRequester.getPage(this.options.url, this.options.path + dateString + '.html');
+            scrapedImages.push(this.parser.parse(""));
         }
 
-        scrape( depth: number ) : apod.APODImage[] {
+        return [];
+    }
 
-            if(!depth) return null;
+    /**
+     * Output a date into the format YYMMDD - 130105
+     * @param date
+     */
+    private getDateString ( date: Date ) : string {
+        var dateString = (date.getFullYear() + "").substring(2);
 
-            var scrapedImages : apod.APODImage[] = [];
-            var date, dateString, requestResult;
-
-            while (depth--) {
-                date = new Date();
-                date = new Date(date.getTime() - ( DAY * depth) );
-
-                dateString = this.getDateString(date);
-                requestResult = this.webRequester.getPage(this.options.url, this.options.path + dateString + '.html');
-                scrapedImages.push(this.parser.parse(""));
-            }
-
-            return scrapedImages;
+        if(date.getMonth() < 9) {
+            dateString += "0" + (date.getMonth()+1);
+        } else {
+            dateString += (date.getMonth()+1);
         }
 
-        /**
-         * Output a date into the format YYMMDD - 130105
-         * @param date
-         */
-        private getDateString ( date: Date ) : string {
-            var dateString = (date.getFullYear() + "").substring(2);
-
-            if(date.getMonth() < 9) {
-                dateString += "0" + (date.getMonth()+1);
-            } else {
-                dateString += (date.getMonth()+1);
-            }
-
-            if(date.getDate() < 10) {
-                dateString += "0" + date.getDate();
-            } else {
-                dateString += date.getDate();
-            }
-
-            return dateString;
+        if(date.getDate() < 10) {
+            dateString += "0" + date.getDate();
+        } else {
+            dateString += date.getDate();
         }
+
+        return dateString;
     }
 }
