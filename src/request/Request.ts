@@ -5,15 +5,11 @@ export interface Page {
 }
 
 export interface Requester {
-    getPage(host: string, path: string) : Page;
+    getPage(host: string, path: string, callback: Function) : void;
 }
 
 export class GenericRequester implements Requester {
-    getPage(host: string, path: string) {
-        return {
-            url: "",
-            code: 0,
-            body: ""
-        }
+    getPage(host: string, path: string, callback: Function) {
+
     }
 }

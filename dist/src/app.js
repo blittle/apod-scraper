@@ -1,3 +1,3 @@
 var scraper = require("./Scraper")
 var apodScraper = new scraper.Scraper();
-apodScraper.scrape(5);
+apodScraper.scrape(10);

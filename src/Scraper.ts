@@ -24,7 +24,7 @@ export class Scraper {
 
         this.options = _.extend({
             cache: options && options.cache || true,
-            url:   options && options.url   || "http://apod.nasa.gov",
+            url:   options && options.url   || "apod.nasa.gov",
             path:  options && options.path  || "/apod/ap"
         }, this.options);
 
@@ -36,15 +36,21 @@ export class Scraper {
 
         var scrapedImages : Image.APODImage[] = [];
 
-        var date, dateString, requestResult;
+        var date, dateString, requestResult,
+            scope = this;
 
         while (depth--) {
             date = new Date();
             date = new Date(date.getTime() - ( DAY * depth) );
 
             dateString = this.getDateString(date);
-            requestResult = this.webRequester.getPage(this.options.url, this.options.path + dateString + '.html');
-            scrapedImages.push(this.parser.parse(""));
+            this.webRequester.getPage(
+                this.options.url,
+                this.options.path + dateString + '.html',
+                (body) => {
+                    scrapedImages.push(scope.parser.parse(body))
+                }
+            );
         }
 
         return [];

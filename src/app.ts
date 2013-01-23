@@ -2,4 +2,4 @@ import scraper = module("Scraper");
 
 var apodScraper = new scraper.Scraper();
 
-apodScraper.scrape(5);
+apodScraper.scrape(10);
