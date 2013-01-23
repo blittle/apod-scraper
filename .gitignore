@@ -1,4 +1,5 @@
 node_modules/**/*
+dist/src/node_modules/**/*
 .idea/**/*
 .idea/*.*
 APODScraper.iml
