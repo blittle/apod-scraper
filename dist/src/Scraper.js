@@ -15,18 +15,16 @@ var Scraper = (function () {
             url: options && options.url || "apod.nasa.gov",
             path: options && options.path || "/apod/ap"
         }, this.options);
-        this.parser.parse("");
     }
     Scraper.prototype.scrape = function (depth) {
         var scrapedImages = [];
-        var date, dateString, requestResult, parser = this.parser;
+        var date, dateString, parser = this.parser;
         while(depth--) {
             date = new Date();
             date = new Date(date.getTime() - (DAY * depth));
             dateString = this.getDateString(date);
-            this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (body) {
-                console.log(body);
-                scrapedImages.push(parser.parse("body"));
+            this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (data) {
+                scrapedImages.push(parser.parse(data.body));
             });
         }
         return [];

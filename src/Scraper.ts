@@ -21,14 +21,11 @@ export class Scraper {
         private parser   : parse.ParserInterface,
         public  options  : ScraperOptions={}
     ) {
-
         this.options = _.extend({
             cache: options && options.cache || true,
             url:   options && options.url   || "apod.nasa.gov",
             path:  options && options.path  || "/apod/ap"
         }, this.options);
-
-        this.parser.parse("");
     }
 
     scrape( depth: number ) : Image.APODImageInterface[] {
@@ -46,8 +43,8 @@ export class Scraper {
             this.requester.getPage(
                 this.options.url,
                 this.options.path + dateString + '.html',
-                (body : string) => {
-                    scrapedImages.push(parser.parse("body"));
+                (data : request.Page) => {
+                    scrapedImages.push(parser.parse(data.body));
                 }
             );
         }
