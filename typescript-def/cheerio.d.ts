@@ -4,6 +4,7 @@ declare interface JQuery {
     removeClass(className?: any): JQuery;
 
     attr(attributeName: string, value: any): JQuery;
+    attr(attributeName: string): string;
     removeAttr(attributeName: any): JQuery;
 
     find(selector: string): JQuery;
@@ -17,7 +18,7 @@ declare interface JQuery {
 
     children(selector?: any): JQuery;
 
-    each(func: (index: any, elem: Element) => JQuery);
+    each(func: (index: any, elem: any) => JQuery);
 
     map(callback: (index: any, domElement: Element) =>any): JQuery;
 
@@ -26,6 +27,7 @@ declare interface JQuery {
 
     first(): JQuery;
     last(): JQuery;
+
     eq(index: number): JQuery;
 
     append(...content: any[]): JQuery;
@@ -52,6 +54,8 @@ declare interface JQuery {
     isArray(obj: any): bool;
     inArray(value: any, array: any[], fromIndex?: number): number;
     merge(first: any[], second: any[]): any[];
+
+
 }
 
 declare interface CheerioOptionsInterface {
@@ -60,6 +64,18 @@ declare interface CheerioOptionsInterface {
     lowerCaseTags?: bool;
 }
 
+declare interface CheerioStatic {
+    (element: Element): JQuery;
+    (object: { }): JQuery;
+    (elementArray: Element[]): JQuery;
+    (object: JQuery): JQuery;
+    (func: Function): JQuery;
+    (array: any[]): JQuery;
+    (): JQuery;
+
+    noConflict(removeAll?: bool): Object;
+}
+
 declare module "cheerio" {
-    export function load (html : string, options?: CheerioOptionsInterface) : JQuery;
+    export function load (html : string, options?: CheerioOptionsInterface) : CheerioStatic;
 }
