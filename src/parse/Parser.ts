@@ -1,13 +1,23 @@
 import image = module("../image/Image");
+import request = module("../request/Request");
 
 export interface ParserInterface {
-    parse(data: string) : image.APODImageInterface;
+    parse(response: request.Response) : image.APODImage;
 }
 
 export class GenericParser implements ParserInterface {
     constructor() {};
 
-    public parse(data: string): image.APODImageInterface {
-        return new image.APODImage("","","","");
+    public parse(response: request.Response): image.APODImage {
+        return {
+            title: "",
+            description: "",
+            url: "",
+            copyrights: [],
+            image: {
+                loRes: "",
+                hiRes: ""
+            }
+        };
     }
 }

@@ -28,9 +28,9 @@ export class Scraper {
         }, this.options);
     }
 
-    scrape( depth: number ) : Image.APODImageInterface[] {
+    scrape( depth: number ) : Image.APODImage[] {
 
-        var scrapedImages : Image.APODImageInterface[] = [];
+        var scrapedImages : Image.APODImage[] = [];
 
         var date, dateString,
             parser = this.parser;
@@ -43,8 +43,8 @@ export class Scraper {
             this.requester.getPage(
                 this.options.url,
                 this.options.path + dateString + '.html',
-                (data : request.Page) => {
-                    scrapedImages.push(parser.parse(data.body));
+                (data : request.Response) => {
+                    scrapedImages.push(parser.parse(data));
                 }
             );
         }

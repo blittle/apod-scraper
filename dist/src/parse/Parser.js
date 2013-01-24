@@ -1,9 +1,19 @@
-var image = require("../image/Image")
+
+
 var GenericParser = (function () {
     function GenericParser() {
     }
-    GenericParser.prototype.parse = function (data) {
-        return new image.APODImage("", "", "", "");
+    GenericParser.prototype.parse = function (response) {
+        return {
+            title: "",
+            description: "",
+            url: "",
+            copyrights: [],
+            image: {
+                loRes: "",
+                hiRes: ""
+            }
+        };
     };
     return GenericParser;
 })();

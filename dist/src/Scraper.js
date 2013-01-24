@@ -24,7 +24,7 @@ var Scraper = (function () {
             date = new Date(date.getTime() - (DAY * depth));
             dateString = this.getDateString(date);
             this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (data) {
-                scrapedImages.push(parser.parse(data.body));
+                scrapedImages.push(parser.parse(data));
             });
         }
         return [];

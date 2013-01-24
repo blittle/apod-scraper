@@ -1,18 +1,17 @@
-export interface APODImageInterface {
+export interface copyright {
+    name: string;
+    url: string;
+    publicDomain: bool;
+}
+
+export interface APODImage {
     title: string;
     description: string;
     url: string;
-    thum: string;
-}
+    copyrights: copyright[];
 
-export class APODImage implements APODImageInterface {
-
-    constructor (
-        public title: string,
-        public description: string,
-        public url: string,
-        public thum: string
-    ) {
-
-    }
+    image : {
+        loRes: string;
+        hiRes: string;
+    };
 }

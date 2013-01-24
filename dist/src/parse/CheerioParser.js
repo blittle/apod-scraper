@@ -1,6 +1,7 @@
 var parser = require("./Parser")
-var image = require("../image/Image")
+
 var cheerio = require("cheerio")
+
 
 var PUBLIC_DOMAIN = [
     "esa", 
@@ -11,14 +12,13 @@ var PUBLIC_DOMAIN = [
 var CheerioParser = (function () {
     function CheerioParser() {
     }
-    CheerioParser.prototype.parse = function (data) {
+    CheerioParser.prototype.parse = function (response) {
         var _this = this;
-        var $ = cheerio.load(data);
-        var title = $('center').eq(1).find('b').eq(0).text();
+        var $ = cheerio.load(response.body), $center = $('center');
+        var title = $center.eq(1).find('b').eq(0).text(), lores = $center.eq(0).find('a').eq(1).children().attr('SRC'), hires = $center.eq(0).find('a').eq(1).attr('href'), desc = $center.eq(1).next().html();
         var copyrights = [];
         $('center').eq(1).find('a').each(function (index, element) {
-            var name = $(element).text();
-            var url = $(element).attr('href');
+            var name = $(element).text(), url = $(element).attr('href');
             var publicDomain = _this.isPublicDomain(name, url);
             if(name !== "Copyright") {
                 copyrights.push({
@@ -26,10 +26,18 @@ var CheerioParser = (function () {
                     url: url,
                     publicDomain: publicDomain
                 });
-                console.log(name, url, publicDomain);
             }
         });
-        return new image.APODImage("", "", "", "");
+        return {
+            title: title,
+            description: desc,
+            copyrights: copyrights,
+            url: response.url,
+            image: {
+                loRes: lores,
+                hiRes: hires
+            }
+        };
     };
     CheerioParser.prototype.isPublicDomain = function (name, url) {
         name = name.toLowerCase();

@@ -5,29 +5,30 @@ import parser = module("Parser");
 import image = module("../image/Image");
 import cheerio = module("cheerio");
 import _ = module("underscore");
+import request = module("../request/Request");
 
 var PUBLIC_DOMAIN = ["esa", "nasa", "wikipedia", "edu"];
 
-interface copyright {
-    name: string;
-    url: string;
-    publicDomain: bool;
-}
-
 export class CheerioParser implements parser.ParserInterface {
+
     constructor() {};
 
-    public parse(data: string): image.APODImageInterface {
+    public parse(response: request.Response): image.APODImage {
 
-        var $ = cheerio.load(data);
+        var $ = cheerio.load(response.body),
+            $center = $('center');
 
-        var title : string = $('center').eq(1).find('b').eq(0).text();
-        var copyrights : copyright[] = [];
+        var title = $center.eq(1).find('b').eq(0).text(),
+            lores = $center.eq(0).find('a').eq(1).children().attr('SRC'),
+            hires = $center.eq(0).find('a').eq(1).attr('href'),
+            desc  = $center.eq(1).next().html();
+
+        var copyrights : image.copyright[] = [];
 
         $('center').eq(1).find('a').each((index, element) => {
-            //Skip the first element
-            var name = $(element).text();
-            var url = $(element).attr('href');
+            var name = $(element).text(),
+                url = $(element).attr('href');
+
             var publicDomain = this.isPublicDomain(name, url);
 
             // Skip over elements that refer to the APOD Copyright page
@@ -37,12 +38,19 @@ export class CheerioParser implements parser.ParserInterface {
                     url: url,
                     publicDomain: publicDomain
                 });
-
-                console.log(name, url, publicDomain);
             }
         });
 
-        return new image.APODImage("","","","");
+        return {
+            title: title,
+            description: desc,
+            copyrights: copyrights,
+            url: response.url,
+            image: {
+                loRes: lores,
+                hiRes: hires
+            }
+        };
     }
 
     private isPublicDomain(name: string, url: string) : bool {

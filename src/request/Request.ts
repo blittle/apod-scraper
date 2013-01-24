@@ -1,4 +1,4 @@
-export interface Page {
+export interface Response {
     url : string;
     code: number;
     body: string;
