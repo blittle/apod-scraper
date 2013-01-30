@@ -5,6 +5,8 @@ import request = module('Request');
 
 export class NodeRequester implements request.RequesterInterface {
 
+    constructor() {}
+
     getPage(host: string, path: string, callback: Function) : void {
 
         var options = {

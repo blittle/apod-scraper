@@ -1,53 +1,54 @@
-declare interface JQuery {
-    addClass(classNames: string): JQuery;
+declare interface Cheerio {
+    
+    addClass(classNames: string): Cheerio;
     hasClass(className: string): bool;
-    removeClass(className?: any): JQuery;
+    removeClass(className?: any): Cheerio;
 
-    attr(attributeName: string, value: any): JQuery;
+    attr(attributeName: string, value: any): Cheerio;
     attr(attributeName: string): string;
-    removeAttr(attributeName: any): JQuery;
+    removeAttr(attributeName: any): Cheerio;
 
-    find(selector: string): JQuery;
+    find(selector: string): Cheerio;
 
-    parent(): JQuery;
+    parent(): Cheerio;
 
-    next(): JQuery;
-    prev(): JQuery;
+    next(): Cheerio;
+    prev(): Cheerio;
 
-    siblings(): JQuery;
+    siblings(): Cheerio;
 
-    children(selector?: any): JQuery;
+    children(selector?: any): Cheerio;
 
-    each(func: (index: any, elem: any) => JQuery);
+    each(func: (index: any, elem: any) => Cheerio);
 
-    map(callback: (index: any, domElement: Element) =>any): JQuery;
+    map(callback: (index: any, domElement: Element) =>any): Cheerio;
 
-    filter(selector: string): JQuery;
-    filter(func: (index: any) =>any): JQuery;
+    filter(selector: string): Cheerio;
+    filter(func: (index: any) =>any): Cheerio;
 
-    first(): JQuery;
-    last(): JQuery;
+    first(): Cheerio;
+    last(): Cheerio;
 
-    eq(index: number): JQuery;
+    eq(index: number): Cheerio;
 
-    append(...content: any[]): JQuery;
-    prepend(...content: any[]): JQuery;
-    after(...content: any[]): JQuery;
-    before(...content: any[]): JQuery;
-    remove(selector: string): JQuery;
-    replaceWith(content: string): JQuery;
-    empty(): JQuery;
+    append(...content: any[]): Cheerio;
+    prepend(...content: any[]): Cheerio;
+    after(...content: any[]): Cheerio;
+    before(...content: any[]): Cheerio;
+    remove(selector: string): Cheerio;
+    replaceWith(content: string): Cheerio;
+    empty(): Cheerio;
 
-    html(htmlString: string): JQuery;
+    html(htmlString: string): Cheerio;
     html(): string;
 
-    text(textString: string): JQuery;
+    text(textString: string): Cheerio;
     text(): string;
 
     toArray(): any[];
 
-    clone() : JQuery;
-    root() : JQuery;
+    clone() : Cheerio;
+    root() : Cheerio;
     dom(): any;
 
     contains(container: Element, contained: Element): bool;
@@ -65,15 +66,8 @@ declare interface CheerioOptionsInterface {
 }
 
 declare interface CheerioStatic {
-    (element: Element): JQuery;
-    (object: { }): JQuery;
-    (elementArray: Element[]): JQuery;
-    (object: JQuery): JQuery;
-    (func: Function): JQuery;
-    (array: any[]): JQuery;
-    (): JQuery;
-
-    noConflict(removeAll?: bool): Object;
+    (...selectors: any[]): Cheerio;
+    (): Cheerio;
 }
 
 declare module "cheerio" {

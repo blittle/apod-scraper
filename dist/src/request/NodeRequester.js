@@ -1,7 +1,8 @@
 var http = require('http')
 var request = require("./Request")
 var NodeRequester = (function () {
-    function NodeRequester() { }
+    function NodeRequester() {
+    }
     NodeRequester.prototype.getPage = function (host, path, callback) {
         var options = {
             hostname: host,
