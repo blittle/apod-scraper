@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-typescript');
     grunt.loadNpmTasks('grunt-requirejs');
+    grunt.loadNpmTasks('grunt-jasmine-node');
 
     grunt.initConfig({
         typescript: {
@@ -43,12 +44,16 @@ module.exports = function(grunt) {
             }
         },
 
+        jasmine_node: {
+//            specNameMatcher: "./Spec", // load only specs containing specNameMatcher
+            projectRoot: "./spec"
+        },
+
         lint: {
             all: ['dist/**/*.js', 'grunt.js']
         }
     });
 
-    grunt.registerTask('default', 'typescript requirejs min');
-    grunt.registerTask('amd', 'typescript requirejs');
-    grunt.registerTask('test', 'typescript requirejs qunit');
+    grunt.registerTask('default', 'typescript');
+    grunt.registerTask('test', 'typescript jasmine_node');
 };

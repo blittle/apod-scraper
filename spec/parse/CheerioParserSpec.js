@@ -3,7 +3,7 @@ var CheerioParser = require("../../dist/src/parse/CheerioParser").CheerioParser;
 var fs = require('fs');
 var _s = require('underscore.string');
 
-var testPage1 = fs.readFileSync("test/parse/testPage1.html");
+var testPage1 = fs.readFileSync("spec/parse/testPage1.html");
 
 describe("APOD Scraper", function() {
 
