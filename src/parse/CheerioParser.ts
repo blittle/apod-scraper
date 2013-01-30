@@ -1,11 +1,14 @@
 ///<reference path='../../typescript-def/cheerio.d.ts'/>
 ///<reference path='../../typescript-def/underscore.d.ts'/>
+///<reference path='../../typescript-def/underscore.string.d.ts'/>
 
 import parser = module("Parser");
 import image = module("../image/Image");
+import request = module("../request/Request");
+
 import cheerio = module("cheerio");
 import _ = module("underscore");
-import request = module("../request/Request");
+import _s = module("underscore.string");
 
 var PUBLIC_DOMAIN = ["esa", "nasa", "wikipedia", "edu"];
 
@@ -23,6 +26,8 @@ export class CheerioParser implements parser.ParserInterface {
             hires = $center.eq(0).find('a').eq(1).attr('href'),
             desc  = $center.eq(1).next().html();
 
+        desc = desc.substring(0, desc.indexOf('<p>'));
+
         var copyrights : image.copyright[] = [];
 
         $('center').eq(1).find('a').each((index, element) => {
@@ -34,7 +39,7 @@ export class CheerioParser implements parser.ParserInterface {
             // Skip over elements that refer to the APOD Copyright page
             if(name !== "Copyright") {
                 copyrights.push({
-                    name: name,
+                    name: _s.trim(name),
                     url: url,
                     publicDomain: publicDomain
                 });
@@ -42,8 +47,8 @@ export class CheerioParser implements parser.ParserInterface {
         });
 
         return {
-            title: title,
-            description: desc,
+            title: _s.capitalize(_s.trim(title)),
+            description: _s.trim(_s.clean(desc)),
             copyrights: copyrights,
             url: response.url,
             image: {

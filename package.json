@@ -5,6 +5,7 @@
     "author": "Bret Little",
     "dependencies": {
         "underscore" : "latest",
+        "underscore.string": "latest",
         "cheerio"     : "latest"
     },
     "devDependencies": {

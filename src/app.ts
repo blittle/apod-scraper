@@ -8,4 +8,4 @@ var apodScraper = new scraper.Scraper(
     new cheerioParse.CheerioParser()
 );
 
-apodScraper.scrape(20);
+apodScraper.scrape(1);
