@@ -26,6 +26,11 @@ export class CheerioParser implements parser.ParserInterface {
             hires = $center.eq(0).find('a').eq(1).attr('href'),
             desc  = $center.eq(1).next().html();
 
+        if(!title || !desc) {
+            console.warn('Cannot parse: ' + response.url);
+            return null;
+        }
+
         // If lores/hires are undefined, assume the content is a video
         // from youtube or vimeo and get its src instead
         if(!hires) {
@@ -39,6 +44,11 @@ export class CheerioParser implements parser.ParserInterface {
         $('center').eq(1).find('a').each((index, element) => {
             var name = $(element).text(),
                 url = $(element).attr('href');
+
+            if(!name || !url) {
+                console.warn("Cannot parse copyrights of: " + response.url);
+                return;
+            }
 
             var publicDomain = this.isPublicDomain(name, url);
 

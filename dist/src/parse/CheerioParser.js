@@ -19,6 +19,10 @@ var CheerioParser = (function () {
         var _this = this;
         var $ = cheerio.load(response.body), $center = $('center');
         var title = $center.eq(1).find('b').eq(0).text(), lores = $center.eq(0).find('a').eq(1).children().attr('SRC'), hires = $center.eq(0).find('a').eq(1).attr('href'), desc = $center.eq(1).next().html();
+        if(!title || !desc) {
+            console.warn('Cannot parse: ' + response.url);
+            return null;
+        }
         if(!hires) {
             hires = $center.eq(0).find('iframe').attr('src');
         }
@@ -26,6 +30,10 @@ var CheerioParser = (function () {
         var copyrights = [];
         $('center').eq(1).find('a').each(function (index, element) {
             var name = $(element).text(), url = $(element).attr('href');
+            if(!name || !url) {
+                console.warn("Cannot parse copyrights of: " + response.url);
+                return;
+            }
             var publicDomain = _this.isPublicDomain(name, url);
             if(name !== "Copyright") {
                 copyrights.push({
