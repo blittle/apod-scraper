@@ -8,7 +8,9 @@ var PUBLIC_DOMAIN = [
     "esa", 
     "nasa", 
     "wikipedia", 
-    "edu"
+    "edu", 
+    "observatory", 
+    "gov"
 ];
 var CheerioParser = (function () {
     function CheerioParser() {
@@ -17,6 +19,9 @@ var CheerioParser = (function () {
         var _this = this;
         var $ = cheerio.load(response.body), $center = $('center');
         var title = $center.eq(1).find('b').eq(0).text(), lores = $center.eq(0).find('a').eq(1).children().attr('SRC'), hires = $center.eq(0).find('a').eq(1).attr('href'), desc = $center.eq(1).next().html();
+        if(!hires) {
+            hires = $center.eq(0).find('iframe').attr('src');
+        }
         desc = desc.substring(0, desc.indexOf('<p>'));
         var copyrights = [];
         $('center').eq(1).find('a').each(function (index, element) {

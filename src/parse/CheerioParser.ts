@@ -10,7 +10,7 @@ import cheerio = module("cheerio");
 import _ = module("underscore");
 import _s = module("underscore.string");
 
-var PUBLIC_DOMAIN = ["esa", "nasa", "wikipedia", "edu"];
+var PUBLIC_DOMAIN = ["esa", "nasa", "wikipedia", "edu", "observatory", "gov"];
 
 export class CheerioParser implements parser.ParserInterface {
 
@@ -25,6 +25,12 @@ export class CheerioParser implements parser.ParserInterface {
             lores = $center.eq(0).find('a').eq(1).children().attr('SRC'),
             hires = $center.eq(0).find('a').eq(1).attr('href'),
             desc  = $center.eq(1).next().html();
+
+        // If lores/hires are undefined, assume the content is a video
+        // from youtube or vimeo and get its src instead
+        if(!hires) {
+            hires = $center.eq(0).find('iframe').attr('src');
+        }
 
         desc = desc.substring(0, desc.indexOf('<p>'));
 
