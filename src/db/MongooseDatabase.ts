@@ -4,24 +4,25 @@ import image = module("../image/Image");
 export class MongooseDatabase implements database.DatabaseInterface {
 
     constructor(
-        private url: string = "localhost",
+        private url : string = "localhost",
+        private dbPath  : string = "apod",
         private user: string = "",
         private pass: string = ""
     ) {};
 
-    saveImage (image: image.APODImage) : void {
-
-    }
-
-    getImage (id: string) : image.APODImage {
+    saveImage (image: image.APODImage) : MongooseDatabase {
         return null;
     }
 
-    getImages (total: number) : image.APODImage[] {
-        return null;
+    getImage (date: Date, callback: Function) : MongooseDatabase {
+        return this;
     }
 
-    getImagesRange (start: Date, end?: Date) : image.APODImage[] {
+    getImages (total: number, callback: Function) : MongooseDatabase {
+        return this;
+    }
+
+    getImagesRange (start: Date, end: any, callback?: Function) : MongooseDatabase {
 
         if(end) {
 
@@ -29,6 +30,6 @@ export class MongooseDatabase implements database.DatabaseInterface {
 
         }
 
-        return null;
+        return this;
     }
 }

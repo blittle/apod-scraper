@@ -18,3 +18,11 @@ var saveImage = function(image: Image.APODImage) {
 };
 
 apodScraper.scrapeToday(saveImage);
+
+setInterval(()=>{
+
+    mdb.getImage(new Date(), (error: Error, image : Image.APODImage) => {
+       console.log(image);
+    });
+
+}, 1000);

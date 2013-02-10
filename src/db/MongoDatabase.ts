@@ -5,11 +5,16 @@ var mongo = require("mongojs");
 
 import database = module("Database");
 import image = module("../image/Image");
+import utils = module("../utils/APODUtils");
 
 /**
  * Should be a unique index on the date attribute,
  * because there is always only one image per day.
  * The code also assumes this to prevent duplicates
+ *
+ * @todo - remove this index dependency (or at least have it auto indexed)
+ * Mongo Query: db.images.ensureIndex( {"date": 1}, {unique: true})
+ *
  */
 
 export class MongoDatabase implements database.DatabaseInterface {
@@ -25,34 +30,42 @@ export class MongoDatabase implements database.DatabaseInterface {
         private pass: string = ""
     ) {};
 
-    saveImage (image: image.APODImage) : void {
+    saveImage (image: image.APODImage) : MongoDatabase {
         this.connect(() => {
             this.db['images'].save(image, function(err, saved) {
                 if( err || !saved ) console.log("Image not saved");
             });
         });
+
+        return this;
     }
 
-    getImage (id: string) : image.APODImage {
-        this.connect();
-        return null;
+    getImage (date: Date, callback: Function) : MongoDatabase {
+
+        date = utils.APODUtils.getNormalizedDate(date);
+
+        this.connect(() => {
+           this.db.images.find({date: date}, callback);
+        });
+
+        return this;
     }
 
-    getImages (total: number) : image.APODImage[] {
+    getImages (total: number, callback: Function) : MongoDatabase {
         this.connect();
-        return null;
+        return this;
     }
 
-    getImagesRange (start: Date, end?: Date) : image.APODImage[] {
-        this.connect();
+    getImagesRange (start: Date, end: any, callback?: Function) : MongoDatabase {
 
-        if(end) {
-
-        } else {
-
+        if(!callback) {
+            callback = end;
+            end = utils.APODUtils.getNormalizedDate(new Date());
         }
 
-        return null;
+        this.connect();
+
+        return this;
     }
 
     private connect(callback?: Function): void {

@@ -1,27 +1,30 @@
 var database = require("./Database")
 
 var MongooseDatabase = (function () {
-    function MongooseDatabase(url, user, pass) {
+    function MongooseDatabase(url, dbPath, user, pass) {
         if (typeof url === "undefined") { url = "localhost"; }
+        if (typeof dbPath === "undefined") { dbPath = "apod"; }
         if (typeof user === "undefined") { user = ""; }
         if (typeof pass === "undefined") { pass = ""; }
         this.url = url;
+        this.dbPath = dbPath;
         this.user = user;
         this.pass = pass;
     }
     MongooseDatabase.prototype.saveImage = function (image) {
-    };
-    MongooseDatabase.prototype.getImage = function (id) {
         return null;
     };
-    MongooseDatabase.prototype.getImages = function (total) {
-        return null;
+    MongooseDatabase.prototype.getImage = function (date, callback) {
+        return this;
     };
-    MongooseDatabase.prototype.getImagesRange = function (start, end) {
+    MongooseDatabase.prototype.getImages = function (total, callback) {
+        return this;
+    };
+    MongooseDatabase.prototype.getImagesRange = function (start, end, callback) {
         if(end) {
         } else {
         }
-        return null;
+        return this;
     };
     return MongooseDatabase;
 })();

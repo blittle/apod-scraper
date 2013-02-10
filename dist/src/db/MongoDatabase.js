@@ -1,6 +1,7 @@
 var mongo = require("mongojs");
 var database = require("./Database")
 
+var utils = require("../utils/APODUtils")
 var MongoDatabase = (function () {
     function MongoDatabase(url, dbPath, user, pass) {
         if (typeof url === "undefined") { url = "localhost"; }
@@ -24,21 +25,29 @@ var MongoDatabase = (function () {
                 }
             });
         });
+        return this;
     };
-    MongoDatabase.prototype.getImage = function (id) {
-        this.connect();
-        return null;
+    MongoDatabase.prototype.getImage = function (date, callback) {
+        var _this = this;
+        date = utils.APODUtils.getNormalizedDate(date);
+        this.connect(function () {
+            _this.db.images.find({
+                date: date
+            }, callback);
+        });
+        return this;
     };
-    MongoDatabase.prototype.getImages = function (total) {
+    MongoDatabase.prototype.getImages = function (total, callback) {
         this.connect();
-        return null;
+        return this;
     };
-    MongoDatabase.prototype.getImagesRange = function (start, end) {
-        this.connect();
-        if(end) {
-        } else {
+    MongoDatabase.prototype.getImagesRange = function (start, end, callback) {
+        if(!callback) {
+            callback = end;
+            end = utils.APODUtils.getNormalizedDate(new Date());
         }
-        return null;
+        this.connect();
+        return this;
     };
     MongoDatabase.prototype.connect = function (callback) {
         if(this.connected) {

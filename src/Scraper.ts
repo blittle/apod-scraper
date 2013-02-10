@@ -5,6 +5,7 @@ var DAY = 86400000;
 import parse = module('parse/Parser');
 import request = module('request/Request');
 import Image = module('image/Image');
+import utils = module('utils/APODUtils');
 
 import _ = module('underscore');
 
@@ -36,11 +37,11 @@ export class Scraper {
             date = new Date();
             date = new Date(date.getTime() - ( DAY * depth) );
 
-            dateString = this.getDateString(date);
+            dateString = utils.APODUtils.getDateString(date);
             this.requester.getPage(
                 this.options.url,
                 this.options.path + dateString + '.html',
-                this.getNormalizedDate(date),
+                utils.APODUtils.getNormalizedDate(date),
                 (data : request.Response) => {
                     callback(parser.parse(data));
                 }
@@ -52,47 +53,16 @@ export class Scraper {
 
     scrapeToday(callback: Function) : void {
 
-        var dateString = this.getDateString(new Date()),
+        var dateString = utils.APODUtils.getDateString(new Date()),
             parser = this.parser;
 
         this.requester.getPage(
             this.options.url,
             this.options.path + dateString + '.html',
-            this.getNormalizedDate(new Date()),
+            utils.APODUtils.getNormalizedDate(new Date()),
             (data : request.Response) => {
                 callback(parser.parse(data));
             }
-        );
-    }
-
-    /**
-     * Output a date into the format YYMMDD - 130105
-     * @param date
-     */
-    private getDateString ( date: Date ) : string {
-        var dateString = (date.getFullYear() + "").substring(2);
-
-        if(date.getMonth() < 9) {
-            dateString += "0" + (date.getMonth()+1);
-        } else {
-            dateString += (date.getMonth()+1);
-        }
-
-        if(date.getDate() < 10) {
-            dateString += "0" + date.getDate();
-        } else {
-            dateString += date.getDate();
-        }
-
-        return dateString;
-    }
-
-    private getNormalizedDate( date: Date) : Date {
-        return new Date(date.getTime() -
-            (date.getHours() * 3600 * 1000) -
-            (date.getMinutes() * 60 * 1000) -
-            (date.getSeconds() * 1000) -
-            date.getMilliseconds()
         );
     }
 }

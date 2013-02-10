@@ -10,6 +10,7 @@ export interface APODImage {
     url: string;
     copyrights: copyright[];
     date: Date;
+    _id ?: any;
 
     image : {
         loRes: string;

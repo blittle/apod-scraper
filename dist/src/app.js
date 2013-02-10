@@ -10,3 +10,8 @@ var saveImage = function (image) {
     mdb.saveImage(image);
 };
 apodScraper.scrapeToday(saveImage);
+setInterval(function () {
+    mdb.getImage(new Date(), function (error, image) {
+        console.log(image);
+    });
+}, 1000);
