@@ -32,7 +32,7 @@ export class MongoDatabase implements database.DatabaseInterface {
 
     saveImage (image: image.APODImage) : MongoDatabase {
         this.connect(() => {
-            this.db['images'].save(image, function(err, saved) {
+            this.db.images.save(image, function(err, saved) {
                 if( err || !saved ) console.log("Image not saved");
             });
         });
@@ -63,7 +63,9 @@ export class MongoDatabase implements database.DatabaseInterface {
             end = utils.APODUtils.getNormalizedDate(new Date());
         }
 
-        this.connect();
+        this.connect(()=> {
+            this.db.images.find({date: {"$gte": start, "$lt": end}}, callback);
+        });
 
         return this;
     }

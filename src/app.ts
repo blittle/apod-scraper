@@ -13,16 +13,29 @@ var apodScraper = new scraper.Scraper(
     new cheerioParse.CheerioParser()
 );
 
+var date;
+
 var saveImage = function(image: Image.APODImage) {
-    mdb.saveImage(image);
+    if(image) {
+        date = image.date;
+        mdb.saveImage(image);
+    } else {
+        console.warn("cannot parse an image from the day after " + date);
+    }
 };
 
-apodScraper.scrapeToday(saveImage);
+//mdb.getImagesRange(new Date(2012, 9, 1), (error: Error, image : Image.APODImage) => {
+//   console.log(image);
+//});
 
-setInterval(()=>{
+//apodScraper.scrapeToday(saveImage);
+//
+apodScraper.scrape(365, saveImage);
 
-    mdb.getImage(new Date(), (error: Error, image : Image.APODImage) => {
-       console.log(image);
-    });
-
-}, 1000);
+//setInterval(()=>{
+//
+//    mdb.getImage(new Date(), (error: Error, image : Image.APODImage) => {
+//       console.log(image);
+//    });
+//
+//}, 1000);

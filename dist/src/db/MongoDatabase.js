@@ -19,7 +19,7 @@ var MongoDatabase = (function () {
     MongoDatabase.prototype.saveImage = function (image) {
         var _this = this;
         this.connect(function () {
-            _this.db['images'].save(image, function (err, saved) {
+            _this.db.images.save(image, function (err, saved) {
                 if(err || !saved) {
                     console.log("Image not saved");
                 }
@@ -42,11 +42,19 @@ var MongoDatabase = (function () {
         return this;
     };
     MongoDatabase.prototype.getImagesRange = function (start, end, callback) {
+        var _this = this;
         if(!callback) {
             callback = end;
             end = utils.APODUtils.getNormalizedDate(new Date());
         }
-        this.connect();
+        this.connect(function () {
+            _this.db.images.find({
+                date: {
+                    "$gte": start,
+                    "$lt": end
+                }
+            }, callback);
+        });
         return this;
     };
     MongoDatabase.prototype.connect = function (callback) {

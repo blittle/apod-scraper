@@ -6,12 +6,13 @@ var cheerioParse = require("./parse/CheerioParser")
 var db = require("./db/MongoDatabase")
 var mdb = new db.MongoDatabase();
 var apodScraper = new scraper.Scraper(new nodeRequest.NodeRequester(), new cheerioParse.CheerioParser());
+var date;
 var saveImage = function (image) {
-    mdb.saveImage(image);
+    if(image) {
+        date = image.date;
+        mdb.saveImage(image);
+    } else {
+        console.warn("cannot parse an image from the day after " + date);
+    }
 };
-apodScraper.scrapeToday(saveImage);
-setInterval(function () {
-    mdb.getImage(new Date(), function (error, image) {
-        console.log(image);
-    });
-}, 1000);
+apodScraper.scrape(365, saveImage);
