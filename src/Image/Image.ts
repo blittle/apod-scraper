@@ -9,6 +9,7 @@ export interface APODImage {
     description: string;
     url: string;
     copyrights: copyright[];
+    date: Date;
 
     image : {
         loRes: string;

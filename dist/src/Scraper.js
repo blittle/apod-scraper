@@ -22,7 +22,7 @@ var Scraper = (function () {
             date = new Date();
             date = new Date(date.getTime() - (DAY * depth));
             dateString = this.getDateString(date);
-            this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (data) {
+            this.requester.getPage(this.options.url, this.options.path + dateString + '.html', this.getNormalizedDate(date), function (data) {
                 callback(parser.parse(data));
             });
         }
@@ -30,7 +30,7 @@ var Scraper = (function () {
     };
     Scraper.prototype.scrapeToday = function (callback) {
         var dateString = this.getDateString(new Date()), parser = this.parser;
-        this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (data) {
+        this.requester.getPage(this.options.url, this.options.path + dateString + '.html', this.getNormalizedDate(new Date()), function (data) {
             callback(parser.parse(data));
         });
     };
@@ -47,6 +47,9 @@ var Scraper = (function () {
             dateString += date.getDate();
         }
         return dateString;
+    };
+    Scraper.prototype.getNormalizedDate = function (date) {
+        return new Date(date.getTime() - (date.getHours() * 3600 * 1000) - (date.getMinutes() * 60 * 1000) - (date.getSeconds() * 1000));
     };
     return Scraper;
 })();

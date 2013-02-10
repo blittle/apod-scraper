@@ -3,7 +3,7 @@ var request = require("./Request")
 var NodeRequester = (function () {
     function NodeRequester() {
     }
-    NodeRequester.prototype.getPage = function (host, path, callback) {
+    NodeRequester.prototype.getPage = function (host, path, date, callback) {
         var options = {
             hostname: host,
             port: 80,
@@ -20,6 +20,7 @@ var NodeRequester = (function () {
                 callback({
                     url: host + path,
                     code: 400,
+                    date: date,
                     body: body
                 });
             });

@@ -1,6 +1,6 @@
 var GenericRequester = (function () {
     function GenericRequester() { }
-    GenericRequester.prototype.getPage = function (host, path, callback) {
+    GenericRequester.prototype.getPage = function (host, path, date, callback) {
     };
     return GenericRequester;
 })();

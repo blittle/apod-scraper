@@ -13,6 +13,7 @@ export class GenericParser implements ParserInterface {
             title: "",
             description: "",
             url: "",
+            date: new Date(),
             copyrights: [],
             image: {
                 loRes: "",

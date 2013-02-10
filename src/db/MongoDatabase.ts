@@ -14,7 +14,7 @@ export class MongoDatabase implements database.DatabaseInterface {
 
     constructor(
         private url : string = "localhost",
-        private db  : string = "apod",
+        private dbPath  : string = "apod",
         private user: string = "",
         private pass: string = ""
     ) {};
@@ -22,9 +22,10 @@ export class MongoDatabase implements database.DatabaseInterface {
     saveImage (image: image.APODImage) : void {
 
         this.connect(() => {
-            this.db['images'].save(image, function(err, saved) {
-                if( err || !saved ) console.log("Image not saved");
-            });
+            console.log(image);
+//            this.db['images'].save(image, function(err, saved) {
+//                if( err || !saved ) console.log("Image not saved");
+//            });
         });
     }
 
@@ -60,7 +61,7 @@ export class MongoDatabase implements database.DatabaseInterface {
 
         console.log("Connecting to db ", this.url);
 
-        this.db = mongo.connect(this.url, [this.collection], function(err) {
+        this.db = mongo.connect(this.dbPath, [this.collection], function(err) {
             if(err) {
                 scope.connected = false;
                 console.error("Cannot connect: " + err);

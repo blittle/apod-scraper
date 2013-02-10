@@ -2,13 +2,13 @@ var mongo = require("mongojs");
 var database = require("./Database")
 
 var MongoDatabase = (function () {
-    function MongoDatabase(url, db, user, pass) {
+    function MongoDatabase(url, dbPath, user, pass) {
         if (typeof url === "undefined") { url = "localhost"; }
-        if (typeof db === "undefined") { db = "apod"; }
+        if (typeof dbPath === "undefined") { dbPath = "apod"; }
         if (typeof user === "undefined") { user = ""; }
         if (typeof pass === "undefined") { pass = ""; }
         this.url = url;
-        this.db = db;
+        this.dbPath = dbPath;
         this.user = user;
         this.pass = pass;
         this.connected = false;
@@ -16,15 +16,8 @@ var MongoDatabase = (function () {
         this.db = null;
     }
     MongoDatabase.prototype.saveImage = function (image) {
-        var _this = this;
         this.connect(function () {
-            _this.db['images'].save(image, function (err, saved) {
-                if(err || !saved) {
-                    console.log("User not saved");
-                } else {
-                    console.log("User saved");
-                }
-            });
+            console.log(image);
         });
     };
     MongoDatabase.prototype.getImage = function (id) {
@@ -51,7 +44,7 @@ var MongoDatabase = (function () {
         }
         var scope = this;
         console.log("Connecting to db ", this.url);
-        this.db = mongo.connect(this.url, [
+        this.db = mongo.connect(this.dbPath, [
             this.collection
         ], function (err) {
             if(err) {

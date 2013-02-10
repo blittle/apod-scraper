@@ -48,6 +48,7 @@ var CheerioParser = (function () {
             description: _s.trim(_s.clean(desc)),
             copyrights: copyrights,
             url: response.url,
+            date: response.date,
             image: {
                 loRes: lores,
                 hiRes: hires

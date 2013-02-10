@@ -8,6 +8,7 @@ var GenericParser = (function () {
             title: "",
             description: "",
             url: "",
+            date: new Date(),
             copyrights: [],
             image: {
                 loRes: "",

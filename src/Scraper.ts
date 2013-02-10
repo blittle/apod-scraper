@@ -40,6 +40,7 @@ export class Scraper {
             this.requester.getPage(
                 this.options.url,
                 this.options.path + dateString + '.html',
+                this.getNormalizedDate(date),
                 (data : request.Response) => {
                     callback(parser.parse(data));
                 }
@@ -57,6 +58,7 @@ export class Scraper {
         this.requester.getPage(
             this.options.url,
             this.options.path + dateString + '.html',
+            this.getNormalizedDate(new Date()),
             (data : request.Response) => {
                 callback(parser.parse(data));
             }
@@ -83,5 +85,9 @@ export class Scraper {
         }
 
         return dateString;
+    }
+
+    private getNormalizedDate( date: Date) : Date {
+        return new Date(date.getTime() - (date.getHours() * 3600 * 1000) - (date.getMinutes() * 60 * 1000) - (date.getSeconds() * 1000));
     }
 }

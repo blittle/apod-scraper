@@ -7,7 +7,7 @@ export class NodeRequester implements request.RequesterInterface {
 
     constructor() {}
 
-    getPage(host: string, path: string, callback: Function) : void {
+    getPage(host: string, path: string, date: Date, callback: Function) : void {
 
         var options = {
             hostname: host,
@@ -27,6 +27,7 @@ export class NodeRequester implements request.RequesterInterface {
                 callback({
                     url : host+path,
                     code: 400,
+                    date: date,
                     body: body
                 });
             });
