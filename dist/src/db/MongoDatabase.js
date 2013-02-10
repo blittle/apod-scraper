@@ -16,8 +16,13 @@ var MongoDatabase = (function () {
         this.db = null;
     }
     MongoDatabase.prototype.saveImage = function (image) {
+        var _this = this;
         this.connect(function () {
-            console.log(image);
+            _this.db['images'].save(image, function (err, saved) {
+                if(err || !saved) {
+                    console.log("Image not saved");
+                }
+            });
         });
     };
     MongoDatabase.prototype.getImage = function (id) {

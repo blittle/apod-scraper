@@ -6,6 +6,12 @@ var mongo = require("mongojs");
 import database = module("Database");
 import image = module("../image/Image");
 
+/**
+ * Should be a unique index on the date attribute,
+ * because there is always only one image per day.
+ * The code also assumes this to prevent duplicates
+ */
+
 export class MongoDatabase implements database.DatabaseInterface {
 
     connected = false;
@@ -20,12 +26,10 @@ export class MongoDatabase implements database.DatabaseInterface {
     ) {};
 
     saveImage (image: image.APODImage) : void {
-
         this.connect(() => {
-            console.log(image);
-//            this.db['images'].save(image, function(err, saved) {
-//                if( err || !saved ) console.log("Image not saved");
-//            });
+            this.db['images'].save(image, function(err, saved) {
+                if( err || !saved ) console.log("Image not saved");
+            });
         });
     }
 

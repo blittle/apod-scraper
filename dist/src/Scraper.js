@@ -49,7 +49,7 @@ var Scraper = (function () {
         return dateString;
     };
     Scraper.prototype.getNormalizedDate = function (date) {
-        return new Date(date.getTime() - (date.getHours() * 3600 * 1000) - (date.getMinutes() * 60 * 1000) - (date.getSeconds() * 1000));
+        return new Date(date.getTime() - (date.getHours() * 3600 * 1000) - (date.getMinutes() * 60 * 1000) - (date.getSeconds() * 1000) - date.getMilliseconds());
     };
     return Scraper;
 })();

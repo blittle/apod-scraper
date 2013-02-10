@@ -88,6 +88,11 @@ export class Scraper {
     }
 
     private getNormalizedDate( date: Date) : Date {
-        return new Date(date.getTime() - (date.getHours() * 3600 * 1000) - (date.getMinutes() * 60 * 1000) - (date.getSeconds() * 1000));
+        return new Date(date.getTime() -
+            (date.getHours() * 3600 * 1000) -
+            (date.getMinutes() * 60 * 1000) -
+            (date.getSeconds() * 1000) -
+            date.getMilliseconds()
+        );
     }
 }
