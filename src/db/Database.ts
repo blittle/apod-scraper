@@ -7,3 +7,7 @@ export interface DatabaseInterface {
     getImagesRange (start: Date, end: Date) : image.APODImage[];
     getImagesRange (start: Date) : image.APODImage[];
 }
+
+export class DatabaseImpl {
+
+}

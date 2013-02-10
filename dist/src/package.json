@@ -9,12 +9,5 @@
         "cheerio"     : "latest",
         "mongojs"     : "latest"
     },
-    "devDependencies": {
-        "grunt": "latest",
-        "grunt-typescript" : "0.0.8",
-        "grunt-requirejs"  : "latest",
-        "grunt-bump"	   : "latest",
-        "grunt-jasmine-node": "latest"
-    },
     "engine": "node >= 0.6.0"
 }

@@ -16,18 +16,23 @@ var Scraper = (function () {
             path: options && options.path || "/apod/ap"
         }, this.options);
     }
-    Scraper.prototype.scrape = function (depth) {
-        var scrapedImages = [];
+    Scraper.prototype.scrape = function (depth, callback) {
         var date, dateString, parser = this.parser;
         while(depth--) {
             date = new Date();
             date = new Date(date.getTime() - (DAY * depth));
             dateString = this.getDateString(date);
             this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (data) {
-                scrapedImages.push(parser.parse(data));
+                callback(parser.parse(data));
             });
         }
         return [];
+    };
+    Scraper.prototype.scrapeToday = function (callback) {
+        var dateString = this.getDateString(new Date()), parser = this.parser;
+        this.requester.getPage(this.options.url, this.options.path + dateString + '.html', function (data) {
+            callback(parser.parse(data));
+        });
     };
     Scraper.prototype.getDateString = function (date) {
         var dateString = (date.getFullYear() + "").substring(2);

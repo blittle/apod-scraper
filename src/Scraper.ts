@@ -28,10 +28,7 @@ export class Scraper {
         }, this.options);
     }
 
-    scrape( depth: number ) : Image.APODImage[] {
-
-        var scrapedImages : Image.APODImage[] = [];
-
+    scrape( depth: number, callback: Function ) : Image.APODImage[] {
         var date, dateString,
             parser = this.parser;
 
@@ -44,12 +41,26 @@ export class Scraper {
                 this.options.url,
                 this.options.path + dateString + '.html',
                 (data : request.Response) => {
-                    scrapedImages.push(parser.parse(data));
+                    callback(parser.parse(data));
                 }
             );
         }
 
         return [];
+    }
+
+    scrapeToday(callback: Function) : void {
+
+        var dateString = this.getDateString(new Date()),
+            parser = this.parser;
+
+        this.requester.getPage(
+            this.options.url,
+            this.options.path + dateString + '.html',
+            (data : request.Response) => {
+                callback(parser.parse(data));
+            }
+        );
     }
 
     /**
