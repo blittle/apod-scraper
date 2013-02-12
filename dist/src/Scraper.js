@@ -30,6 +30,9 @@ var Scraper = (function () {
         return [];
     };
     Scraper.prototype.scrapeToday = function (callback) {
+        this.scrapeDate(new Date(), callback);
+    };
+    Scraper.prototype.scrapeDate = function (date, callback) {
         var dateString = utils.APODUtils.getDateString(new Date()), parser = this.parser;
         this.requester.getPage(this.options.url, this.options.path + dateString + '.html', utils.APODUtils.getNormalizedDate(new Date()), function (data) {
             callback(parser.parse(data));

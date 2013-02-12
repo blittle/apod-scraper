@@ -52,7 +52,10 @@ export class Scraper {
     }
 
     scrapeToday(callback: Function) : void {
+        this.scrapeDate( new Date(), callback);
+    }
 
+    scrapeDate( date: Date, callback: Function) : void {
         var dateString = utils.APODUtils.getDateString(new Date()),
             parser = this.parser;
 
