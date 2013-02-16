@@ -10,10 +10,19 @@ var server = restify.createServer({
 });
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
-server.use(restify.bodyParser());
 server.get(URL_ROOT + '/images/:count', function (req, res, next) {
     var count = req.params.count * 1;
-    console.log(count);
-    res.send(req.params);
-    return next();
+    mdb.getImages(count, function (error, images) {
+        if(error) {
+            next(new restify.InternalError(error));
+        } else {
+            res.send({
+                images: images
+            });
+            next();
+        }
+    });
+});
+server.listen(8080, function () {
+    console.log('%s listening at %s', server.name, server.url);
 });

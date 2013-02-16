@@ -52,8 +52,8 @@ export class MongoDatabase implements database.DatabaseInterface {
     }
 
     getImages (total: number, callback: Function) : MongoDatabase {
-        this.connect();
-        return this;
+        var date = new Date();
+        return this.getImagesRange(new Date(date.getTime() - (total * 86400000)), date, callback);
     }
 
     getImagesRange (start: Date, end: any, callback?: Function) : MongoDatabase {

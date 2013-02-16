@@ -38,8 +38,8 @@ var MongoDatabase = (function () {
         return this;
     };
     MongoDatabase.prototype.getImages = function (total, callback) {
-        this.connect();
-        return this;
+        var date = new Date();
+        return this.getImagesRange(new Date(date.getTime() - (total * 86400000)), date, callback);
     };
     MongoDatabase.prototype.getImagesRange = function (start, end, callback) {
         var _this = this;
