@@ -1,41 +1,32 @@
-import scraper = module("Scraper");
-import nodeRequest = module('request/NodeRequester');
-import cheerioParse = module('parse/CheerioParser');
-import parse = module('parse/Parser');
+///<reference path='../typescript-def/restify.d.ts'/>
 
 import Image = module('image/Image');
 import db = module('db/MongoDatabase');
 
-var mdb = new db.MongoDatabase();
+import restify = module('restify');
 
-var apodScraper = new scraper.Scraper(
-    new nodeRequest.NodeRequester(),
-    new cheerioParse.CheerioParser()
-);
+var mdb = new db.MongoDatabase();
 
 var date;
 
-var saveImage = function(image: Image.APODImage) {
-    if(image) {
-        date = image.date;
-        mdb.saveImage(image);
-    } else {
-        console.warn("cannot parse an image from the day after " + date);
-    }
-};
+var URL_ROOT = "apod"
 
-//mdb.getImagesRange(new Date(2012, 9, 1), (error: Error, image : Image.APODImage) => {
-//   console.log(image);
-//});
+var server = restify.createServer({
+    name: 'APOD Service',
+    version: '0.8.0'
+});
 
-//apodScraper.scrapeToday(saveImage);
-//
-apodScraper.scrape(365, saveImage);
+server.use(restify.acceptParser(server.acceptable));
+server.use(restify.queryParser());
+//server.use(restify.bodyParser());
 
-//setInterval(()=>{
-//
-//    mdb.getImage(new Date(), (error: Error, image : Image.APODImage) => {
-//       console.log(image);
-//    });
-//
-//}, 1000);
+server.get(URL_ROOT + '/images/:count', function (req, res, next) {
+    var count = req.params.count * 1;
+    console.log(count);
+    res.send(req.params);
+    return next();
+});
+
+//apodScraper.scrape(365, saveImage);
+
+

@@ -7,10 +7,13 @@
         "underscore" : "latest",
         "underscore.string": "latest",
         "cheerio"     : "latest",
-        "mongojs"     : "latest"
+        "mongojs"     : "latest",
+        "restify"     : "latest"
+    },
+    "optionalDependencies": {
+        "dtrace-provider": "latest"
     },
     "devDependencies": {
-        "grunt": "latest",
         "grunt-typescript" : "0.0.8",
         "grunt-requirejs"  : "latest",
         "grunt-bump"	   : "latest",

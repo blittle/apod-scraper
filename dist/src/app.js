@@ -1,18 +1,19 @@
-var scraper = require("./Scraper")
-var nodeRequest = require("./request/NodeRequester")
-var cheerioParse = require("./parse/CheerioParser")
-
 
 var db = require("./db/MongoDatabase")
+var restify = require('restify')
 var mdb = new db.MongoDatabase();
-var apodScraper = new scraper.Scraper(new nodeRequest.NodeRequester(), new cheerioParse.CheerioParser());
 var date;
-var saveImage = function (image) {
-    if(image) {
-        date = image.date;
-        mdb.saveImage(image);
-    } else {
-        console.warn("cannot parse an image from the day after " + date);
-    }
-};
-apodScraper.scrape(365, saveImage);
+var URL_ROOT = "apod";
+var server = restify.createServer({
+    name: 'APOD Service',
+    version: '0.8.0'
+});
+server.use(restify.acceptParser(server.acceptable));
+server.use(restify.queryParser());
+server.use(restify.bodyParser());
+server.get(URL_ROOT + '/images/:count', function (req, res, next) {
+    var count = req.params.count * 1;
+    console.log(count);
+    res.send(req.params);
+    return next();
+});
