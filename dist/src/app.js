@@ -12,6 +12,7 @@ server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.get(URL_ROOT + '/images/:count', function (req, res, next) {
     var count = req.params.count * 1;
+    console.log(new Date() + ' : ' + ' Web service request: ' + req.href);
     mdb.getImages(count, function (error, images) {
         if(error) {
             next(new restify.InternalError(error));

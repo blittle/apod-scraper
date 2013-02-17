@@ -9,6 +9,8 @@ export class NodeRequester implements request.RequesterInterface {
 
     getPage(host: string, path: string, date: Date, callback: Function) : void {
 
+        console.log(new Date() + ' : ' + 'Retrieving url: ' + path);
+
         var options = {
             hostname: host,
             port: 80,

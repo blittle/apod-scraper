@@ -18,6 +18,7 @@ var MongoDatabase = (function () {
     }
     MongoDatabase.prototype.saveImage = function (image) {
         var _this = this;
+        console.log(new Date() + ' : ' + 'Saving to db: ' + this.url + '/' + this.dbPath);
         this.connect(function () {
             _this.db.images.save(image, function (err, saved) {
                 if(err || !saved) {
@@ -43,6 +44,7 @@ var MongoDatabase = (function () {
     };
     MongoDatabase.prototype.getImagesRange = function (start, end, callback) {
         var _this = this;
+        console.log(new Date() + ' : ' + 'Pulling from db: ' + this.url + '/' + this.dbPath);
         if(!callback) {
             callback = end;
             end = utils.APODUtils.getNormalizedDate(new Date());

@@ -4,6 +4,7 @@ var NodeRequester = (function () {
     function NodeRequester() {
     }
     NodeRequester.prototype.getPage = function (host, path, date, callback) {
+        console.log(new Date() + ' : ' + 'Retrieving url: ' + path);
         var options = {
             hostname: host,
             port: 80,

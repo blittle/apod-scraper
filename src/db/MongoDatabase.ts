@@ -31,6 +31,9 @@ export class MongoDatabase implements database.DatabaseInterface {
     ) {};
 
     saveImage (image: image.APODImage) : MongoDatabase {
+
+        console.log(new Date() + ' : ' + 'Saving to db: ' + this.url + '/' + this.dbPath);
+
         this.connect(() => {
             this.db.images.save(image, function(err, saved) {
                 if( err || !saved ) console.log("Image not saved");
@@ -57,6 +60,8 @@ export class MongoDatabase implements database.DatabaseInterface {
     }
 
     getImagesRange (start: Date, end: any, callback?: Function) : MongoDatabase {
+
+        console.log(new Date() + ' : ' + 'Pulling from db: ' + this.url + '/' + this.dbPath);
 
         if(!callback) {
             callback = end;
