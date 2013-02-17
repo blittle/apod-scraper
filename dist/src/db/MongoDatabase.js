@@ -18,11 +18,13 @@ var MongoDatabase = (function () {
     }
     MongoDatabase.prototype.saveImage = function (image) {
         var _this = this;
-        console.log(new Date() + ' : ' + 'Saving to db: ' + this.url + '/' + this.dbPath);
+        var logPath = image.url;
         this.connect(function () {
             _this.db.images.save(image, function (err, saved) {
                 if(err || !saved) {
-                    console.log("Image not saved");
+                    console.log(new Date() + ' : ' + "Image not saved: " + logPath);
+                } else {
+                    console.log(new Date() + ' : ' + 'Saving to db: ' + logPath);
                 }
             });
         });

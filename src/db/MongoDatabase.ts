@@ -32,11 +32,16 @@ export class MongoDatabase implements database.DatabaseInterface {
 
     saveImage (image: image.APODImage) : MongoDatabase {
 
-        console.log(new Date() + ' : ' + 'Saving to db: ' + this.url + '/' + this.dbPath);
+        var logPath = image.url;
 
         this.connect(() => {
             this.db.images.save(image, function(err, saved) {
-                if( err || !saved ) console.log("Image not saved");
+                if( err || !saved ) {
+                    console.log(new Date() + ' : ' + "Image not saved: " + logPath);
+                }
+                else {
+                    console.log(new Date() + ' : ' + 'Saving to db: ' + logPath);
+                }
             });
         });
 
