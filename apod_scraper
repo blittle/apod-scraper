@@ -1,1 +1,1 @@
-node dist/src/runner.js -c &
+node dist/src/runner.js -c > logs/scraper.log &
