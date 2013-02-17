@@ -24,7 +24,7 @@ server.get(URL_ROOT + '/images/:count', (req, res, next) => {
 
     var count = req.params.count * 1;
 
-    console.log(new Date() + ' : ' + ' Web service request: ' + req.href);
+    console.log(new Date() + ' : ' + ' Web service request: ' + req.path());
 
     mdb.getImages(count, (error: Error, images: Image.APODImage[]) => {
         if(error) {
