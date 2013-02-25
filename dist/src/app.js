@@ -11,6 +11,8 @@ var server = restify.createServer({
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.get(URL_ROOT + '/images/:count', function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     var count = req.params.count * 1;
     console.log(new Date() + ' : ' + ' Web service request: ' + req.path());
     mdb.getImages(count, function (error, images) {
