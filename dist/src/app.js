@@ -19,9 +19,7 @@ server.get(URL_ROOT + '/images/:count', function (req, res, next) {
         if(error) {
             next(new restify.InternalError(error));
         } else {
-            res.send({
-                images: images
-            });
+            res.send(images);
             next();
         }
     });
