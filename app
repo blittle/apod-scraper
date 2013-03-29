@@ -1,1 +1,1 @@
-node dist/src/app.js > logs/app.log &
+nohup node dist/src/app.js > logs/app.log &
