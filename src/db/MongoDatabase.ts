@@ -3,9 +3,9 @@
 var mongo = require("mongojs");
 
 
-import database = module("Database");
-import image = module("../image/Image");
-import utils = module("../utils/APODUtils");
+import database = require("Database");
+import image = require("../Image/Image");
+import utils = require("../utils/APODUtils");
 
 /**
  * Should be a unique index on the date attribute,
@@ -19,85 +19,85 @@ import utils = module("../utils/APODUtils");
 
 export class MongoDatabase implements database.DatabaseInterface {
 
-    connected = false;
-    collection = "images";
-    db = null;
+	connected = false;
+	collection = "images";
+	db = null;
 
-    constructor(
-        private url : string = "localhost",
-        private dbPath  : string = "apod",
-        private user: string = "",
-        private pass: string = ""
-    ) {};
+	constructor(
+		private url : string = "localhost",
+		private dbPath  : string = "apod",
+		private user: string = "",
+		private pass: string = ""
+		) {}
 
-    saveImage (image: image.APODImage) : MongoDatabase {
+	saveImage (image: image.APODImage) : MongoDatabase {
 
-        var logPath = image.url;
+		var logPath = image.url;
 
-        this.connect(() => {
-            this.db.images.save(image, function(err, saved) {
-                if( err || !saved ) {
-                    console.log(new Date() + ' : ' + "Image not saved: " + logPath);
-                }
-                else {
-                    console.log(new Date() + ' : ' + 'Saving to db: ' + logPath);
-                }
-            });
-        });
+		this.connect(() => {
+			this.db.images.save(image, function(err, saved) {
+				if( err || !saved ) {
+					console.log(new Date() + ' : ' + "Image not saved: " + logPath);
+				}
+				else {
+					console.log(new Date() + ' : ' + 'Saving to db: ' + logPath);
+				}
+			});
+		});
 
-        return this;
-    }
+		return this;
+	}
 
-    getImage (date: Date, callback: Function) : MongoDatabase {
+	getImage (date: Date, callback: Function) : MongoDatabase {
 
-        date = utils.APODUtils.getNormalizedDate(date);
+		date = utils.APODUtils.getNormalizedDate(date);
 
-        this.connect(() => {
-           this.db.images.find({date: date}, callback);
-        });
+		this.connect(() => {
+			this.db.images.find({date: date}, callback);
+		});
 
-        return this;
-    }
+		return this;
+	}
 
-    getImages (total: number, callback: Function) : MongoDatabase {
-        var date = new Date();
-        return this.getImagesRange(new Date(date.getTime() - (total * 86400000)), date, callback);
-    }
+	getImages (total: number, callback: Function) : MongoDatabase {
+		var date = new Date();
+		return this.getImagesRange(new Date(date.getTime() - (total * 86400000)), date, callback);
+	}
 
-    getImagesRange (start: Date, end: any, callback?: Function) : MongoDatabase {
+	getImagesRange (start: Date, end: any, callback?: Function) : MongoDatabase {
 
-        console.log(new Date() + ' : ' + 'Pulling from db: ' + this.url + '/' + this.dbPath);
+		console.log(new Date() + ' : ' + 'Pulling from db: ' + this.url + '/' + this.dbPath);
 
-        if(!callback) {
-            callback = end;
-            end = utils.APODUtils.getNormalizedDate(new Date());
-        }
+		if(!callback) {
+			callback = end;
+			end = utils.APODUtils.getNormalizedDate(new Date());
+		}
 
-        this.connect(()=> {
-            this.db.images.find({date: {"$gte": start, "$lt": end}}, callback);
-        });
+		this.connect(()=> {
+			this.db.images.find({date: {"$gte": start, "$lt": end}}, callback);
+		});
 
-        return this;
-    }
+		return this;
+	}
 
-    private connect(callback?: Function): void {
-        if(this.connected) {
-            if(callback) callback.call(this);
-            return;
-        }
+	private connect(callback?: Function): void {
+		if(this.connected) {
+			if(callback) callback.call(this);
+			return;
+		}
 
-        var scope = this;
+		var scope = this;
 
-        console.log("Connecting to db ", this.url);
+		console.log("Connecting to db ", this.url);
 
-        this.db = mongo.connect(this.dbPath, [this.collection], function(err) {
-            if(err) {
-                scope.connected = false;
-                console.error("Cannot connect: " + err);
-            }
-        });
+		this.db = mongo.connect(this.dbPath, [this.collection], function(err) {
+			if(err) {
+				scope.connected = false;
+				console.error("Cannot connect: " + err);
+			}
+		});
 
-        scope.connected = true;
-        if(callback) callback.call(scope);
-    }
+		scope.connected = true;
+		if(callback) callback.call(scope);
+	}
 }

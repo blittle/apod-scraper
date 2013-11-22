@@ -1,4 +1,5 @@
-var database = require("./Database")
+
+
 
 var MongooseDatabase = (function () {
     function MongooseDatabase(url, dbPath, user, pass) {
@@ -14,18 +15,24 @@ var MongooseDatabase = (function () {
     MongooseDatabase.prototype.saveImage = function (image) {
         return null;
     };
+
     MongooseDatabase.prototype.getImage = function (date, callback) {
         return this;
     };
+
     MongooseDatabase.prototype.getImages = function (total, callback) {
         return this;
     };
+
     MongooseDatabase.prototype.getImagesRange = function (start, end, callback) {
-        if(end) {
+        if (end) {
         } else {
         }
+
         return this;
     };
     return MongooseDatabase;
 })();
 exports.MongooseDatabase = MongooseDatabase;
+
+//# sourceMappingURL=MongooseDatabase.js.map

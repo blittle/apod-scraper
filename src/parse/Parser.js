@@ -1,3 +1,6 @@
+///<reference path='../Image/Image.ts'/>
+///<reference path='../request/Request.ts'/>
+
 
 
 var GenericParser = (function () {
@@ -19,3 +22,5 @@ var GenericParser = (function () {
     return GenericParser;
 })();
 exports.GenericParser = GenericParser;
+
+//# sourceMappingURL=Parser.js.map

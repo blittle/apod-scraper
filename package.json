@@ -1,23 +1,24 @@
 {
-    "name": "apod-scraper",
-    "version": "0.8.0",
-    "description": "A tool to scrape the astronomy picture of the day website and return images, titles, and descriptions",
-    "author": "Bret Little",
-    "dependencies": {
-        "underscore" : "latest",
-        "underscore.string": "latest",
-        "cheerio"     : "latest",
-        "mongojs"     : "latest",
-        "restify"     : "latest"
-    },
-    "optionalDependencies": {
-        "dtrace-provider": "latest"
-    },
-    "devDependencies": {
-        "grunt-typescript" : "0.0.8",
-        "grunt-requirejs"  : "latest",
-        "grunt-bump"	   : "latest",
-        "grunt-jasmine-node": "latest"
-    },
-    "engine": "node >= 0.6.0"
+  "name": "apod-scraper",
+  "version": "0.8.0",
+  "description": "A tool to scrape the astronomy picture of the day website and return images, titles, and descriptions",
+  "author": "Bret Little",
+  "dependencies": {
+    "underscore": "latest",
+    "underscore.string": "latest",
+    "cheerio": "latest",
+    "mongojs": "latest",
+    "restify": "latest",
+    "grunt": "~0.4.2",
+    "grunt-typescript": "~0.2.4"
+  },
+  "optionalDependencies": {
+    "dtrace-provider": "latest"
+  },
+  "devDependencies": {
+    "grunt-requirejs": "latest",
+    "grunt-bump": "latest",
+    "grunt-jasmine-node": "latest"
+  },
+  "engine": "node >= 0.6.0"
 }

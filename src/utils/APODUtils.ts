@@ -1,32 +1,32 @@
 export class APODUtils {
-    /**
-     * Output a date into the format YYMMDD - 130105
-     * @param date
-     */
-    static getDateString ( date: Date ) : string {
-        var dateString = (date.getFullYear() + "").substring(2);
+	/**
+	 * Output a date into the format YYMMDD - 130105
+	 * @param date
+	 */
+	static getDateString ( date: Date ) : string {
+		var dateString = (date.getFullYear() + "").substring(2);
 
-        if(date.getMonth() < 9) {
-            dateString += "0" + (date.getMonth()+1);
-        } else {
-            dateString += (date.getMonth()+1);
-        }
+		if(date.getMonth() < 9) {
+			dateString += "0" + (date.getMonth()+1);
+		} else {
+			dateString += (date.getMonth()+1);
+		}
 
-        if(date.getDate() < 10) {
-            dateString += "0" + date.getDate();
-        } else {
-            dateString += date.getDate();
-        }
+		if(date.getDate() < 10) {
+			dateString += "0" + date.getDate();
+		} else {
+			dateString += date.getDate();
+		}
 
-        return dateString;
-    }
+		return dateString;
+	}
 
-    static getNormalizedDate( date: Date) : Date {
-        return new Date(date.getTime() -
-            (date.getHours() * 3600 * 1000) -
-            (date.getMinutes() * 60 * 1000) -
-            (date.getSeconds() * 1000) -
-            date.getMilliseconds()
-        );
-    }
+	static getNormalizedDate( date: Date) : Date {
+		return new Date(date.getTime() -
+			(date.getHours() * 3600 * 1000) -
+			(date.getMinutes() * 60 * 1000) -
+			(date.getSeconds() * 1000) -
+			date.getMilliseconds()
+		);
+	}
 }

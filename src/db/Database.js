@@ -1,6 +1,10 @@
 
+
 var DatabaseImpl = (function () {
-    function DatabaseImpl() { }
+    function DatabaseImpl() {
+    }
     return DatabaseImpl;
 })();
 exports.DatabaseImpl = DatabaseImpl;
+
+//# sourceMappingURL=Database.js.map

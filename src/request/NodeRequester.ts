@@ -1,40 +1,40 @@
 ///<reference path='../../typescript-def/node.d.ts'/>
 
-import http = module('http');
-import request = module('Request');
+import http = require('http');
+import request = require('Request');
 
 export class NodeRequester implements request.RequesterInterface {
 
-    constructor() {}
+	constructor() {}
 
-    getPage(host: string, path: string, date: Date, callback: Function) : void {
+	getPage(host: string, path: string, date: Date, callback: Function) : void {
 
-        console.log(new Date() + ' : ' + 'Retrieving url: ' + path);
+		console.log(new Date() + ' : ' + 'Retrieving url: ' + path);
 
-        var options = {
-            hostname: host,
-            port: 80,
-            path: path,
-            method: 'GET'
-        };
+		var options = {
+			hostname: host,
+			port: 80,
+			path: path,
+			method: 'GET'
+		};
 //
-        var req = http.request(options, function(res) {
-            var body = "";
-            res.setEncoding('utf8');
-            res.on('data', function (chunk) {
-                body += chunk;
-            });
+		var req = http.request(options, function(res) {
+			var body = "";
+			res.setEncoding('utf8');
+			res.on('data', function (chunk) {
+				body += chunk;
+			});
 
-            res.on('end', function() {
-                callback({
-                    url : host+path,
-                    code: 400,
-                    date: date,
-                    body: body
-                });
-            });
-        });
+			res.on('end', function() {
+				callback({
+					url : host+path,
+					code: 400,
+					date: date,
+					body: body
+				});
+			});
+		});
 
-        req.end();
-    }
+		req.end();
+	}
 }

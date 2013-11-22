@@ -1,7 +1,10 @@
 var GenericRequester = (function () {
-    function GenericRequester() { }
+    function GenericRequester() {
+    }
     GenericRequester.prototype.getPage = function (host, path, date, callback) {
     };
     return GenericRequester;
 })();
 exports.GenericRequester = GenericRequester;
+
+//# sourceMappingURL=Request.js.map
