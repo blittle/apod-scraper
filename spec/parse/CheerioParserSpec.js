@@ -1,4 +1,4 @@
-var CheerioParser = require("../../dist/src/parse/CheerioParser").CheerioParser;
+var CheerioParser = require("../../src/parse/CheerioParser").CheerioParser;
 
 var fs = require('fs');
 var _s = require('underscore.string');

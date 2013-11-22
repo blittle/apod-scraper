@@ -7,4 +7,3 @@ var DatabaseImpl = (function () {
 })();
 exports.DatabaseImpl = DatabaseImpl;
 
-//# sourceMappingURL=Database.js.map

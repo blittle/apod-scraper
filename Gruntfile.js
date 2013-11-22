@@ -43,10 +43,10 @@ module.exports = function(grunt) {
 //            }
 //        },
 //
-//        jasmine_node: {
-////            specNameMatcher: "./Spec", // load only specs containing specNameMatcher
-//            projectRoot: "./spec"
-//        },
+        jasmine_node: {
+//            specNameMatcher: "./Spec", // load only specs containing specNameMatcher
+            projectRoot: "./spec"
+        },
 //
 //        lint: {
 //            all: ['dist/**/*.js', 'grunt.js']
@@ -54,5 +54,5 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', 'typescript');
-    grunt.registerTask('test', 'typescript jasmine_node');
+    grunt.registerTask('test', ['typescript', 'jasmine_node']);
 };

@@ -18,7 +18,8 @@
   "devDependencies": {
     "grunt-requirejs": "latest",
     "grunt-bump": "latest",
-    "grunt-jasmine-node": "latest"
+    "grunt-jasmine-node": "latest",
+    "jasmine-node": "~1.11.0"
   },
   "engine": "node >= 0.6.0"
 }

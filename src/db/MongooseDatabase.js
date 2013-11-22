@@ -35,4 +35,3 @@ var MongooseDatabase = (function () {
 })();
 exports.MongooseDatabase = MongooseDatabase;
 
-//# sourceMappingURL=MongooseDatabase.js.map
