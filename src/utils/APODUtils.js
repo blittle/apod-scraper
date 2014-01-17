@@ -1,7 +1,11 @@
 var APODUtils = (function () {
     function APODUtils() {
     }
-    APODUtils.getDateString = function (date) {
+    APODUtils.getDateString = /**
+    * Output a date into the format YYMMDD - 130105
+    * @param date
+    */
+    function (date) {
         var dateString = (date.getFullYear() + "").substring(2);
 
         if (date.getMonth() < 9) {
@@ -26,3 +30,4 @@ var APODUtils = (function () {
 })();
 exports.APODUtils = APODUtils;
 
+//# sourceMappingURL=APODUtils.js.map

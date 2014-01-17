@@ -1,1 +1,0 @@
-{"version":3,"file":"Request.js","sourceRoot":"","sources":["Request.ts"],"names":["GenericRequester","GenericRequester.constructor","GenericRequester.getPage"],"mappings":"AAAA;IAWAA;;AAICA,IAHAA,qCAAAA,UAAQA,IAAYA,EAAEA,IAAYA,EAAEA,IAAUA,EAAEA,QAAkBA;IAElEE,CAACA;IACFF;AAACA,CAAAA,IAAA;AAJD,4CAIC;AACD"}

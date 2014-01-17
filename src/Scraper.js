@@ -1,3 +1,4 @@
+///<reference path='../typescript-def/underscore.d.ts'/>
 var DAY = 86400000;
 
 
@@ -50,3 +51,4 @@ var Scraper = (function () {
 })();
 exports.Scraper = Scraper;
 
+//# sourceMappingURL=Scraper.js.map

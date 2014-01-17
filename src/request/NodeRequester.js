@@ -1,3 +1,4 @@
+///<reference path='../../typescript-def/node.d.ts'/>
 var http = require('http');
 
 
@@ -14,6 +15,7 @@ var NodeRequester = (function () {
             method: 'GET'
         };
 
+        //
         var req = http.request(options, function (res) {
             var body = "";
             res.setEncoding('utf8');
@@ -37,3 +39,4 @@ var NodeRequester = (function () {
 })();
 exports.NodeRequester = NodeRequester;
 
+//# sourceMappingURL=NodeRequester.js.map

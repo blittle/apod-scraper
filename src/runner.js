@@ -24,6 +24,7 @@ var saveImage = function (image) {
 var cmd = process.argv[2], value = process.argv[3];
 
 if (cmd === '-c') {
+    // Continuous Mode
     value = (value ? value * 1 : 86400000);
 
     console.log("Scraping at an interval of: " + value + " milliseconds");
@@ -32,6 +33,7 @@ if (cmd === '-c') {
         apodScraper.scrapeToday(saveImage);
     }, value);
 } else if (cmd === '-d') {
+    // Process specific date
     console.log("Scraping date " + (value || new Date()));
     if (value) {
         apodScraper.scrapeDate(new Date(value), saveImage);
@@ -39,6 +41,7 @@ if (cmd === '-c') {
         apodScraper.scrapeToday(saveImage);
     }
 } else if (cmd === '-p') {
+    // Process past amount of days
     value = value ? value * 1 : 1;
 
     console.log("Scraping past " + value + " days");
@@ -52,3 +55,4 @@ if (cmd === '-c') {
     console.log("-p count - Scrape the past days, given a count - defaults to 1");
 }
 
+//# sourceMappingURL=runner.js.map
