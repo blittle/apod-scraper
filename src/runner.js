@@ -13,17 +13,26 @@ var apodScraper = new scraper.Scraper(new nodeRequest.NodeRequester(), new cheer
 var date;
 
 var saveImage = function (image) {
-	ImageWriter.saveImage(image.image.hiRes, function(err, paths) {
-		if(err) return console.log('Cannot download image ' + image.image.hiRes);
-
+	function saveToMongo(paths) {
 		if (image) {
 			date = image.date;
-			image.localImages = paths;
+			if(paths) image.localImages = paths;
 			mdb.saveImage(image);
 		} else {
 			console.warn("cannot parse an image from the day after " + date);
 		}
-	});
+	}
+
+	// If we are dealing with a video there will be no loRes path and therefore we don't
+	// want to try to create a thumbnail image with ImageWriter
+	if(image.image.loRes) {
+		ImageWriter.saveImage(image.image.hiRes, function(err, paths) {
+			if(err) return console.log('Cannot download image ' + image.image.hiRes);
+			saveToMongo(paths);
+		});
+	} else {
+		saveToMongo();
+	}
 };
 
 var cmd = process.argv[2], value = process.argv[3];

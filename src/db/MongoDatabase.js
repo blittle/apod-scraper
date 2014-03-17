@@ -23,13 +23,19 @@ var MongoDatabase = (function () {
         var logPath = image.url;
 
         this.connect(function () {
-            _this.db.images.save(image, function (err, saved) {
-                if (err || !saved) {
-                    console.log(new Date() + ' : ' + "Image not saved: " + logPath);
-                } else {
-                    console.log(new Date() + ' : ' + 'Saving to db: ' + logPath);
-                }
-            });
+			_this.db.images.find({ url: logPath }, function(err, images) {
+				if(!err && (!images || !images.length) ) {
+					_this.db.images.save(image, function (err, saved) {
+						if (err || !saved) {
+							console.log(new Date() + ' : ' + "Image not saved: " + logPath);
+						} else {
+							console.log(new Date() + ' : ' + 'Saving to db: ' + logPath);
+						}
+					});
+				} else {
+					console.log('Image already in db');
+				}
+			});
         });
 
         return this;
@@ -46,9 +52,13 @@ var MongoDatabase = (function () {
         return this;
     };
 
-    MongoDatabase.prototype.getImages = function (total, callback) {
+    MongoDatabase.prototype.getImages = function (index, total, callback) {
         var date = new Date();
-        return this.getImagesRange(new Date(date.getTime() - (total * 86400000)), date, callback);
+        return this.getImagesRange(
+			new Date(date.getTime() - (total * 86400000)),
+			new Date(date.getTime() - (index * 86400000)),
+			callback
+		);
     };
 
     MongoDatabase.prototype.getImagesRange = function (start, end, callback) {

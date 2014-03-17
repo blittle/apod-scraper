@@ -19,17 +19,18 @@ server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 
 //server.use(restify.bodyParser());
-server.get(URL_ROOT + '/images/:count', function (req, res, next) {
+server.get(URL_ROOT + '/images/:index/:count', function (req, res, next) {
     // Resitify currently has a bug which doesn't allow you to set default headers
     // This headers comply with CORS and allow us to server our response to any origin
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    var count = req.params.count * 1;
+    var count = req.params.count * 1,
+		index = req.params.index * 1;
 
     console.log(new Date() + ' : ' + ' Web service request: ' + req.path());
 
-    mdb.getImages(count, function (error, images) {
+    mdb.getImages(index, count, function (error, images) {
         if (error) {
             next(new restify.InternalError(error));
         } else {

@@ -18,7 +18,10 @@ var CheerioParser = (function () {
         var _this = this;
         var $ = cheerio.load(response.body), $center = $('center');
 
-        var title = $center.eq(1).find('b').eq(0).text().trim(), lores = $center.eq(0).find('a').eq(1).children().attr('src') || $center.eq(0).find('a').eq(1).children().attr('SRC'), hires = $center.eq(0).find('a').eq(1).attr('href'), desc = $center.eq(1).next().html().trim();
+        var title = $center.eq(1).find('b').eq(0).text().trim(),
+			lores = $center.eq(0).find('a').eq(1).children().attr('src') || $center.eq(0).find('a').eq(1).children().attr('SRC'),
+			hires = $center.eq(0).find('a').eq(1).attr('href'),
+			desc = $center.eq(1).next().html().trim();
 
         if (!title || !desc) {
             console.warn('Cannot parse: ' + response.url);

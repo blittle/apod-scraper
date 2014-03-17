@@ -16,7 +16,7 @@ function createThumb(source, dest, callback) {
 }
 
 exports.saveImage = function(path, callback) {
-	var fileName = path.substring(path.lastIndexOf('/'));
+	var fileName = path.substring(path.lastIndexOf('/') + 1);
 	var fullPath = IMAGES_BASE + '/full/' + fileName;
 	var thumPath = IMAGES_BASE + '/thum/' + fileName;
 
