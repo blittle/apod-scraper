@@ -1,7 +1,7 @@
 var scraper = require("./Scraper");
 var nodeRequest = require("./request/NodeRequester");
 var cheerioParse = require("./parse/CheerioParser");
-
+var ImageWriter = require('./utils/ImageWriter');
 
 
 var db = require("./db/MongoDatabase");
@@ -13,12 +13,17 @@ var apodScraper = new scraper.Scraper(new nodeRequest.NodeRequester(), new cheer
 var date;
 
 var saveImage = function (image) {
-    if (image) {
-        date = image.date;
-        mdb.saveImage(image);
-    } else {
-        console.warn("cannot parse an image from the day after " + date);
-    }
+	ImageWriter.saveImage(image.image.hiRes, function(err, paths) {
+		if(err) return console.log('Cannot download image ' + image.image.hiRes);
+
+		if (image) {
+			date = image.date;
+			image.localImages = paths;
+			mdb.saveImage(image);
+		} else {
+			console.warn("cannot parse an image from the day after " + date);
+		}
+	});
 };
 
 var cmd = process.argv[2], value = process.argv[3];
@@ -54,5 +59,3 @@ if (cmd === '-c') {
     console.log("-d date - Scrape a specificc date - defaults to today");
     console.log("-p count - Scrape the past days, given a count - defaults to 1");
 }
-
-//# sourceMappingURL=runner.js.map
