@@ -11,12 +11,27 @@
 		    background-color: black;
 		    box-sizing:border-box;
 		    border: 8px solid black;
+			overflow: hidden;
 
 		    -moz-transition:border .5s, -moz-transform .2s;
 		    -webkit-transition:border .5s, -webkit-transform .2s;
 		    -o-transition:border .5s, -o-transform .2s;
 		    transition:border .5s, transform .2s;
 		    display:none;
+		}
+
+		a, a:active, a:visited {
+			color: #43bfbf;
+			text-decoration: none;
+			-moz-transition:all .4s;
+			-webkit-transition:all .4s;
+			-o-transition:all .4s;
+			transition:all .4s;
+		}
+
+		a:hover {
+			color: #3AA6A5;
+			font-weight: bold;
 		}
 
 		.hud {
@@ -219,7 +234,7 @@
 					}
 
 					
-					if(scope.renderObject(def.id, x, y, def.w * Mosaic.SIZE, def.h * Mosaic.SIZE, scope.mos, windowWidth, windowHeight)) {
+					if(scope.renderObject(def.id, x, y, def.w * Mosaic.SIZE, def.h * Mosaic.SIZE, scope.mos, windowWidth, windowHeight, (def.json && def.json.localImages) ? def.json.localImages.medPath : "")) {
 						count++;
 					} else {
 						$('#'+def.id).remove();
@@ -242,7 +257,7 @@
 								
 		}
 
-		Mosaic.prototype.renderObject = function(id, x, y, width, height, mos, windowWidth, windowHeight) {
+		Mosaic.prototype.renderObject = function(id, x, y, width, height, mos, windowWidth, windowHeight, path) {
 			var left = x * Mosaic.SIZE * this.x;
 			var top = y * Mosaic.SIZE * this.y;		    
 
@@ -252,7 +267,7 @@
 			if(cardInView(left, top, width, height, windowWidth, windowHeight)) {
 				if(!$('#'+id).length) {
 					$('.card-container').append('<div id="' + id + '" class="card" style="width: ' + width + 'px; height: ' + height + 'px; left:' + left + 'px; top:' + top + 'px;" data-x="' + x + '" data-y="' + y + '" data-mosaic="' + mos + '" data-width="' + width + '" data-height="' + height + '"> ' +
-				    	'<img>' +
+				    	'<img src="' + path + '">' +
 			    	'</div>');
 
 				    this.renderQueue.push(id);	
@@ -307,8 +322,8 @@
 				$.get('http://localhost:8080/apod/images/' + count + '/' + ++count, function(resp) {
 					objectCache.push(o);
 					o.json = resp[0];
-					if(resp[0].localImages) {
-						$('#' + o.id).find('img').attr('src', resp[0].localImages.thumPath);
+					if(o.json && o.json.localImages) {
+						$('#' + o.id).find('img').attr('src', o.json.localImages.medPath);
 					}
 				});
 			})(o)
@@ -336,6 +351,8 @@
 			var anchorX = e.pageX;
 			var anchorY = e.pageY;
 
+			e.stopPropagation();
+
 			$(this).mousemove(function(e) {
 				var p = $('.card-container').position();	
 
@@ -358,9 +375,9 @@
 		});
 
 		var bottomRight = new Mosaic(1, 1);
-		var topRight = new Mosaic(1, -1);
-		var topLeft = new Mosaic(-1, -1);
-		var bottomLeft = new Mosaic(-1, 1);
+		var topRight 	= new Mosaic(1, -1);
+		var topLeft 	= new Mosaic(-1, -1);
+		var bottomLeft 	= new Mosaic(-1, 1);
 
 		bottomRight.renderView();
 
@@ -370,12 +387,14 @@
 
 		$('body').on('click', '.card', function(e) {
 			var o = _.find(objectCache, {id : $(this).closest('.card').attr('id')});
-			console.log(o.json.description);
+
 			e.stopPropagation();
+			$('.body').off('mousemove');
+			if(!o || !o.json || !o.json.description) return;
 			if(!hudDisplayed) {
 				$('body')
 					.append('<div class="screen"></div>')
-					.append('<div class="hud" style="background: transparent url(\'' + o.json.localImages.fullPath + '\') no-repeat center;">' +
+					.append('<div class="hud" style="background: transparent url(\'' + o.json.localImages.fullPath + '\') no-repeat center; background-size: 100%; ">' +
 						'<i class="fa fa-times-circle-o fa-3x"></i>' + 
 						"<div class='caption'><h1>" + o.json.title + "</h1>" +
 							o.json.description +
