@@ -11,11 +11,21 @@ var _s = require("underscore.string");
 
 var PUBLIC_DOMAIN = ["esa", "nasa", "wikipedia", "edu", "observatory", "gov"];
 
+function parseYoutubeId(url) {
+	return url.substring(url.lastIndexOf('/') + 1, url.indexOf('?'));
+}
+
+function parseVimeoId(url) {
+	return url.substring(url.lastIndexOf('/') + 1, url.indexOf('?'));
+}
+
 var CheerioParser = (function () {
     function CheerioParser() {
     }
     CheerioParser.prototype.parse = function (response) {
-        var _this = this;
+        var _this = this,
+			vimeo, youtube;
+
         var $ = cheerio.load(response.body), $center = $('center');
 
         var title = $center.eq(1).find('b').eq(0).text().trim(),
@@ -31,6 +41,16 @@ var CheerioParser = (function () {
         if (!hires) {
             hires = $center.eq(0).find('iframe').attr('src');
         }
+
+		if (!lores) {
+			if (hires.indexOf('youtube') > -1) {
+				youtube = parseYoutubeId(hires);
+			} else {
+				vimeo = parseVimeoId(hires);
+			}
+
+			hires = null;
+		}
 
         if (desc.indexOf('<p>') > 0) {
             desc = desc.substring(0, desc.indexOf('<p>'));
@@ -65,6 +85,8 @@ var CheerioParser = (function () {
             copyrights: copyrights,
             url: response.url,
             date: response.date,
+			vimeo: vimeo,
+			youtube: youtube,
             image: {
                 loRes: lores,
                 hiRes: hires

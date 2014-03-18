@@ -72,8 +72,7 @@ var MongoDatabase = (function () {
 
         this.connect(function () {
             _this.db.images.find({
-				date: { "$gte": start, "$lt": end },
-				"image.loRes": {"$exists": true}
+				date: { "$gte": start, "$lt": end }
 			}, callback);
         });
 

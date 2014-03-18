@@ -19,7 +19,6 @@
 		    transition:border .5s, transform .2s;
 		    display:none;
 		}
-
 		a, a:active, a:visited {
 			color: #43bfbf;
 			text-decoration: none;
@@ -133,6 +132,14 @@
 			-o-transform: scale(1.03, 1.03);
 			-webkit-transform: scale(1.03, 1.03);
 			z-index: 1;
+		}
+
+		.card .wide {
+			width: 100%;
+		}
+
+		.card .tall {
+			height: 100%;
 		}
 
 		html,body, .card-container {
@@ -266,8 +273,9 @@
 
 			if(cardInView(left, top, width, height, windowWidth, windowHeight)) {
 				if(!$('#'+id).length) {
-					$('.card-container').append('<div id="' + id + '" class="card" style="width: ' + width + 'px; height: ' + height + 'px; left:' + left + 'px; top:' + top + 'px;" data-x="' + x + '" data-y="' + y + '" data-mosaic="' + mos + '" data-width="' + width + '" data-height="' + height + '"> ' +
-				    	'<img src="' + path + '">' +
+					$('.card-container').append(
+					'<div id="' + id + '" class="card" style="width: ' + width + 'px; height: ' + height + 'px; left:' + left + 'px; top:' + top + 'px;" data-x="' + x + '" data-y="' + y + '" data-mosaic="' + mos + '" data-width="' + width + '" data-height="' + height + '"> ' +
+				    	'<img src="' + path + '" class="' + ((width === 300 && height === 600) ? 'tall' : 'wide') + '">' +
 			    	'</div>');
 
 				    this.renderQueue.push(id);	
@@ -324,6 +332,8 @@
 					o.json = resp[0];
 					if(o.json && o.json.localImages) {
 						$('#' + o.id).find('img').attr('src', o.json.localImages.medPath);
+					} else {
+
 					}
 				});
 			})(o)

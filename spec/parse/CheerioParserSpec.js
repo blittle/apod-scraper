@@ -44,8 +44,10 @@ describe("APOD Scraper", function() {
         });
 
         it("Should parse a url", function() {
-            expect(vimeo.image.hiRes).toEqual("http://player.vimeo.com/video/58385453?portrait=0");
-            expect(vimeo.image.loRes).not.toBeDefined();
+            expect(vimeo.image.hiRes).toBeFalsy();
+            expect(vimeo.image.loRes).toBeFalsy();
+			console.log(vimeo);
+			expect(vimeo.vimeo).toBe('58385453');
         });
 
         it("Should parse copyright information", function() {
@@ -114,8 +116,9 @@ describe("APOD Scraper", function() {
         });
 
         it("Should parse a url", function() {
-            expect(youtube.image.hiRes).toEqual("http://www.youtube.com/embed/7o3Oi9JWsyM?rel=0");
-            expect(youtube.image.loRes).not.toBeDefined();
+            expect(youtube.image.hiRes).toBeFalsy();
+            expect(youtube.image.loRes).toBeFalsy();
+			expect(youtube.youtube).toBe('7o3Oi9JWsyM');
         });
 
         it("Should parse copyright information", function() {
