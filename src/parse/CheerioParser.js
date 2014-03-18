@@ -42,7 +42,7 @@ var CheerioParser = (function () {
             hires = $center.eq(0).find('iframe').attr('src');
         }
 
-		if (!lores) {
+		if (!lores && hires) {
 			if (hires.indexOf('youtube') > -1) {
 				youtube = parseYoutubeId(hires);
 			} else {

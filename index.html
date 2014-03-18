@@ -330,10 +330,15 @@
 				$.get('http://localhost:8080/apod/images/' + count + '/' + ++count, function(resp) {
 					objectCache.push(o);
 					o.json = resp[0];
-					if(o.json && o.json.localImages) {
-						$('#' + o.id).find('img').attr('src', o.json.localImages.medPath);
-					} else {
-
+					if(o.json) {
+						if(o.json.localImages) {
+							$('#' + o.id).find('img').attr('src', o.json.localImages.medPath);
+						} else if(o.json.youtube) {
+							$('#' + o.id).find('img').attr('src', "http://img.youtube.com/vi/" + o.json.youtube + "/default.jpg");
+							console.log('youtube');
+						} else if(o.json.vimeo) {
+							console.log('vimeo');
+						}
 					}
 				});
 			})(o)
