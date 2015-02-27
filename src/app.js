@@ -1,5 +1,3 @@
-///<reference path='../typescript-def/restify.d.ts'/>
-
 var db = require("./db/MongoDatabase");
 
 var restify = require('restify');
@@ -17,20 +15,18 @@ var server = restify.createServer({
 
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
+server.use(restify.bodyParser());
 
 //server.use(restify.bodyParser());
-server.get(URL_ROOT + '/images/:index/:count', function (req, res, next) {
+server.get(URL_ROOT + '/images', function (req, res, next) {
     // Resitify currently has a bug which doesn't allow you to set default headers
     // This headers comply with CORS and allow us to server our response to any origin
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    var count = req.params.count * 1,
-		index = req.params.index * 1;
-
     console.log(new Date() + ' : ' + ' Web service request: ' + req.path());
 
-    mdb.getImages(index, count, function (error, images) {
+    mdb.getImages(req.query.page, function (error, images) {
         if (error) {
             next(new restify.InternalError(error));
         } else {
@@ -40,8 +36,7 @@ server.get(URL_ROOT + '/images/:index/:count', function (req, res, next) {
     });
 });
 
-server.listen(8080, function () {
+server.listen(3000, function () {
     console.log('%s listening at %s', server.name, server.url);
 });
 
-//# sourceMappingURL=app.js.map

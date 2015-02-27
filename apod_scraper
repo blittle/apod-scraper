@@ -1,1 +1,1 @@
-nohup node dist/src/runner.js -c > logs/scraper.log &
+nohup node src/runner.js -c > logs/scraper.log &

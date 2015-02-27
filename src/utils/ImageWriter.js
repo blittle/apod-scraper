@@ -35,6 +35,7 @@ exports.saveImage = function(path, callback) {
 			console.log('Image downloaded: ' + fullPath);
 			createThumb(fullPath, thumPath, medPath, function(err) {
 				if(err) {
+					console.log("cannot create thum, is graphicsmagick installed?");
 					console.log(err);
 					callback(err);
 				}
