@@ -1,6 +1,7 @@
 var db = require("./db/MongoDatabase");
 
 var restify = require('restify');
+var _ = require('underscore');
 
 var mdb = new db.MongoDatabase();
 
@@ -30,6 +31,9 @@ server.get(URL_ROOT + '/images', function (req, res, next) {
         if (error) {
             next(new restify.InternalError(error));
         } else {
+						images = _.filter(images, function(img) {
+							return img.localImages || img.youtube || img.vimeo;
+						});
             res.send(images);
             next();
         }
