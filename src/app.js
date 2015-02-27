@@ -32,7 +32,7 @@ server.get(URL_ROOT + '/images', function (req, res, next) {
             next(new restify.InternalError(error));
         } else {
 						images = _.filter(images, function(img) {
-							return img.localImages || img.youtube || img.vimeo;
+							return img.localImages; // only return images for now
 						});
             res.send(images);
             next();
